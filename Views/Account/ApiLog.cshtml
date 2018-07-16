@@ -1,0 +1,90 @@
+﻿@{
+    string ControllerName = @HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+
+    Atreemo.Models.Tool mTool = Atreemo.Views.Tools.Functions.GetToolByName(ControllerName);
+    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Atreemo.Views.Tools.Functions.GetCultureName());
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "API Log";
+    string InstanceUrl = HttpContext.Current.Request.Url.AbsoluteUri.Substring(0, HttpContext.Current.Request.Url.AbsoluteUri.IndexOf("//") + 2) + HttpContext.Current.Request.Url.Authority;
+    InstanceUrl += (System.Configuration.ConfigurationManager.AppSettings["SubDomainName"] != null ? "/" + System.Configuration.ConfigurationManager.AppSettings["SubDomainName"] : "");
+    string ImagePath = InstanceUrl + "/Content/images/ActiveTools/api.png";
+}
+
+    
+<div class="row" style="font-weight: bold; padding: 20px;">
+    <div class="col-md-12">
+
+        <img width="58" src=@ImagePath style="padding-bottom:16px;" class="ToolTitleImage" /><span style="font-weight: 200; font-size: 16pt; color: gray" class="ToolTitleText"> API Log</span>
+
+    </div>
+</div>
+
+<script>
+    function PreviewXMLByID(ID, XMLParam) {
+        $.ajax({
+            url: '/Account/GetApiLogXMLByID',
+            type: 'POST',
+            data: { 'ID': ID, 'XMLParam': XMLParam },
+            success: function (data) {
+                if (data != "Error") {
+                    var kendoWindow = $("<div style=\"width:600px;height:420px;\"/>").kendoWindow({
+                        title: "Preview XML",
+                        resizable: false,
+                        modal: true
+                    });
+                    kendoWindow.data("kendoWindow")
+                        .content($("#XML-Display").html().replace("#XML_Text", data))
+                        .center().open();
+                } else {
+                    alert("something seems wrong");
+                }
+            },
+            error: function () {
+                alert("something seems wrong");
+            }
+        });
+
+    }
+</script>
+<script id="XML-Display" type="text/x-kendo-template">
+    <br />
+    <table style="width:100%;">
+        <tr>
+            <td align="center">
+                <textarea rows="20" cols="40" style="border:none;max-width:600px !important;width:550px;" disabled="disabled">
+                    #XML_Text
+                </textarea>
+            </td>
+        </tr>
+    </table>
+    <br />
+</script>
+
+@(Html.Kendo().Grid<Atreemo.Controllers.AccountController.ApiLogModel>()
+    .Name("ApiLogGrid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.ID);
+        columns.Bound(p => p.URD).Format("{0:dd/MM/yyyy HH:mm:ss}");
+        columns.Bound(p => p.Controller);
+        columns.Bound(p => p.XmlParameter).ClientTemplate("<input type='button'  class='PreviewButton'  onclick='PreviewXMLByID(#: ID #,\"XmlParameter\" )' title='Preview Xml Parameter'/>");
+        columns.Bound(p => p.MethodName);
+        columns.Bound(p => p.XmlOutput).ClientTemplate("<input type='button' class='PreviewButton' onclick='PreviewXMLByID(#: ID #,\"XmlOutput\" )' title='Preview Xml Output'/>");
+        columns.Bound(p => p.Error);
+        columns.Bound(p => p.UserFullName);
+    }).ColumnMenu()
+    .Pageable(pageable => pageable
+    .PageSizes(true)
+    .ButtonCount(5))
+    .Sortable()
+    .Resizable(resizable => resizable.Columns(true))
+    .AutoBind(true)
+    .Reorderable(reorder => reorder.Columns(true))
+    .Filterable()
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(10)
+        .Read(read => read.Action("GetApiLog", "Account"))
+        .ServerOperation(false)
+    )
+)

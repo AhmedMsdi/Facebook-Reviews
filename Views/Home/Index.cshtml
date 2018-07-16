@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_OnlyLogoLayout.cshtml";
+}
+
+<h2>Index</h2>
+<script>
+    function TestFunction(Email) {
+        alert("Not implemented");
+    }
+</script>
+<table align="center" style="width:100%;margin-bottom:10px;text-align: center;">
+    <tr>
+        <td style="display:inline-table">
+            <input type="button" style="margin: 3px; width: 150px" class="DefaultButtonStyle" value='New Contact' />
+        </td>
+    </tr>
+</table>
+<h1>Welcome @TempData["Name"]</h1>
+<h1>Your Access Token is @TempData["AccessToken"]</h1>
+<h1>Your Access Token Secret is @TempData["AccessTokenSecret"]</h1>
+@(Html.Kendo().Grid<Atreemo.Models.Person>()
+        .Name("grid")
+         .Columns(columns =>
+        {
+            columns.Bound(e => e.Email).Template(e => { }).ClientTemplate("<table style='border:none !important'><tr style='border:none !important'> "
+                    + "<td style='border:none !important'><img  src='../Content/images/Functions/Delete.png' title='Delete' style='cursor:pointer;width:26px' onclick='TestFunction()'  /></td>"
+                    + "<td style='border:none !important'><img  src='../Content/images/Functions/edit24.png' title='Edit' style='cursor:pointer;width:26px' onclick='TestFunction()'/></td>"
+                    + "<td style='border:none !important'><img  src='../Content/images/Functions/ConnectAs.png' title='Connect As' style='cursor:pointer;width:26px' onclick='TestFunction()'/></td>"
+                    + "<td style='border:none !important'><img src='../Content/images/Functions/Resend.png' title='Resend Credentials' style='cursor:pointer;width:26px' onclick='TestFunction()'/></td>"
+                    + "</tr></table>").Width(150).Title("Actions").HtmlAttributes(new { @class = "Center" }).HeaderHtmlAttributes(new { @class = "Center" });
+            columns.Bound(c => c.FirstName);
+            columns.Bound(c => c.Email);
+        })
+        //.HtmlAttributes(new { style = "height: 550px;" })
+        .Scrollable()
+        .Sortable()
+        .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("Customers_Read", "Home"))
+            .PageSize(20)
+        )
+)

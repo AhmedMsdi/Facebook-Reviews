@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "SLPThankYouPage";
+    Layout = null;
+}
+
+@{
+    string Content = Atreemo.Helpers.SLPHelper.GetSlpThankYouPage();
+    string Header = Atreemo.Helpers.SurveyHelper.GetSurveyHeader();
+}
+
+<div>
+    @Html.Raw(@Header)
+</div>
+<div style=" text-align: center; margin-top: 25px; font-family: Arial; font-size: 20px;">
+    @Html.Raw(@Content)
+</div>
+

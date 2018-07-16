@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Atreemo.Models.page>
+@{
+    ViewBag.Title = "FacebookCallback";
+    Layout = "~/Views/Shared/_OurProjectLayout.cshtml";
+}
+
+
+
+
+<h2>Liste de mes pages</h2>
+
+
+
+
+
+<div>
+    @(Html.Kendo().Grid(Model)
+                        .Name("grid")
+                        .Columns(columns =>
+                        {
+                            columns.Bound(c => c.name)
+                            .ClientTemplate(
+                                @"<div class='customer-photo'
+style='background-image: url(" + @Url.Content("~/content/web/Customers/#:data.CustomerID#.jpg") + ");'></div><div class='customer-name'>#: ContactName #</div>")
+                              .Width(240);
+
+                //  columns.Command(command=>command.Custom("custom").Text("Details").Action("Details","Home"));
+                columns.Bound(c => c.id).Template(@<text>
+                        @Html.ActionLink("Show Details", "Details", new { id = @item.id })
+                </text>);
+                    })
+                .HtmlAttributes(new { style = "height: 550px;" })
+                .Scrollable()
+                .Groupable()
+                .Sortable()
+                .Pageable(pageable => pageable
+                    .Refresh(true)
+                    .PageSizes(true)
+                    .ButtonCount(5))
+                .DataSource(dataSource => dataSource
+                    .Ajax()
+                    .Read(read => read.Action("Customers_Read", "Grid"))
+                    .PageSize(20)
+                )
+    )
+</div>
+<style>
+    .customer-photo {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-size: 32px 35px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 32px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-left: 5px;
+    }
+
+    .customer-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        padding-left: 3px;
+    }
+  
+</style>
+

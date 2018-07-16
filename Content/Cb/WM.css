@@ -1,0 +1,406 @@
+﻿/*
+.tbody
+{
+	position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+    border: 1px dashed #82BC42;
+    margin: 8px -1px;
+}
+*/
+.groupecssUnselected 
+{
+    position: relative;
+    width: 100%;
+    /*float: left;*/
+    clear: both;
+    display:table;
+    border: 2px dashed #ff0000;  
+    
+    /*margin: 0px -1px 0px -1px;*/
+    /*border-collapse: collapse !important;*/
+    /*margin: 8px -1px;  */
+    /*
+    background: #FFFF80;
+    opacity: 0.5; 
+    filter:Alpha(Opacity=0.5);
+    */
+ 
+}
+
+/*.groupecssUnselected a
+{
+    pointer-events: none;
+}*/
+
+.templateheaderFooter
+{
+    position: relative;
+    /*display: block;*/
+    display:table;
+    width: 100%;
+    /*float: left;*/
+    clear: both;
+    border: 2px solid #00ff00; 
+}
+
+
+.groupecssSelected 
+{
+    position: relative;
+    /*display: block;*/
+    display:table;
+    width: 100%;
+    /*float: left;*/
+    clear: both;
+    border: 2px dashed #ff0000; 
+    animation: blink .5s step-end infinite alternate;
+}
+
+/*.groupecssSelected a
+{
+    pointer-events: none;
+}*/
+
+@keyframes blink { 
+   50% { border-color: #82BC42; } 
+}
+
+.ObjCompleted
+{
+    /*position: relative;*/
+    width: 100%;
+    clear: both;
+    border: 2px solid #00ff00; 
+    display: inline-block !important;
+}
+
+.ObjNotCompleted
+{
+    /*position: relative;*/
+    width: 100%;
+    clear: both;
+    border: 1px solid #ff0000; 
+    display: inline-block !important;
+}
+
+.MissingImg
+{
+    border: 1px solid #a3a3a3; 
+    background: #b1b1b1 url(/Content/Cb/Sections/ReplaceImage3.jpg)  repeat; 
+    color: #000000; 
+    font-weight: bold; 
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    text-align:center;
+    vertical-align:middle;
+    text-decoration:none;
+}
+
+.ClassDiv2
+{
+    background:url(/Content/Cb/Sections/MissingImageText.png) no-repeat center ;
+    /*border-color: red;
+    border-style: solid;
+    border-width: 1px;*/
+}
+.ClassDiv1
+{
+    border: 1px solid #a3a3a3; 
+    background:url(/Content/Cb/Sections/ReplaceImage3.jpg) ;
+    /*width: 100%;*/
+    display:block;
+
+}
+
+
+
+
+
+   /*    .NGUp {
+    border-style: none;
+    cursor:pointer;
+    top:0;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+   border-radius:2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('../images/Functions/Up.png') !important;
+    background-position:center;
+}
+
+    .NGUp:hover, NGUp:active, NGUp:focus {
+        height: 25px !important;
+        cursor:pointer;
+        top:0;
+        width: 25px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        /*border-radius:2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('../images/Functions/Up.png') !important;
+        background-position:center;
+    }
+
+    .NGUpDisabled {
+    border-style: none;
+    cursor:pointer;
+    top:0;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    /*border-radius:2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('../images/Functions/Up.png') !important;
+    background-position:center;
+    cursor:not-allowed;
+}
+
+    /*        .NGDown {
+    border-style: none;
+    cursor:pointer;
+    top:0;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    border-radius:2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('../images/Functions/Down.png') !important;
+    background-position:center;
+}*/
+
+    /*.NGDown:hover, NGDown:active, NGDown:focus {
+        height: 25px !important;
+        cursor:pointer;
+        top:0;
+       width: 25px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        border-radius:2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('../images/Functions/Down.png') !important;
+        background-position:center;
+    }
+
+                .NGDownDisabled {
+    border-style: none;
+    cursor:pointer;
+    top:0;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    /*border-radius:2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('../images/Functions/Down.png') !important;
+    background-position:center;
+}
+
+                .NGDelete {
+    border-style: none;
+    cursor:pointer;
+    top:0;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    /*border-radius:2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('../images/Functions/DeleteNG.png') !important;
+    background-position:center;
+}*/
+
+   /* .NGDelete:hover, NGDelete:active, NGDelete:focus {
+        height: 25px !important;
+        cursor:pointer;
+        top:0;
+        width: 25px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        /*border-radius:2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('../images/Functions/DeleteNG.png') !important;
+        background-position:center;
+    }*/
+
+        /*       .NGName {
+    border-style: none;
+    cursor:pointer;
+    top:0;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    /*border-radius:2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('../images/Functions/NameNG.png') !important;
+    background-position:center;
+}
+
+    .NGName:hover, NGName:active, NGName:focus {
+        height: 25px !important;
+        cursor:pointer;
+        top:0;
+        width: 25px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        /*border-radius:2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('../images/Functions/NameNG.png') !important;
+        background-position:center;
+    }  
+
+                        .NGSelection {
+    border-style: none;
+    cursor:pointer;
+    top:0;
+    height: 29px !important;
+    border: none !important;
+    width: 25px !important;
+    border-radius:2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('../images/Functions/SelectionNG.png') !important;
+    background-position:center;
+}
+
+    .NGSelection:hover, NGSelection:active, NGSelection:focus {
+        height: 29px !important;
+        cursor:pointer;
+        top:0;
+        width: 25px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        border-radius:2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('../images/Functions/SelectionNG.png') !important;
+        background-position:center;
+    } 
+
+
+                    .NGDefault {
+    border-style: none;
+    cursor:pointer;
+    top:0;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    border-radius:2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('../images/Functions/DefaultNG.png') !important;
+    background-position:center;
+}
+
+    .NGDefault:hover, NGDefault:active, NGDefault:focus {
+        height: 25px !important;
+        cursor:pointer;
+        top:0;
+        width: 25px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        border-radius:2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('../images/Functions/DefaultNG.png') !important;
+        background-position:center;
+    }
+
+                        .NGDisplaySelection {
+    border-style: none;
+    cursor:pointer;
+    top:0;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    border-radius:2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('../images/Functions/Icon-list.png') !important;
+    background-position:center;
+}
+
+    .NGDisplaySelection:hover, NGDisplaySelection:active, NGDisplaySelection:focus {
+        height: 25px !important;
+        cursor:pointer;
+        top:0;
+        width: 25px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        border-radius:2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('../images/Functions/Icon-list.png') !important;
+        background-position:center;
+    }
+
+    /*.NGDynamicSection {
+    border-style: none;
+    cursor:pointer;
+    top:0;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    /*border-radius:2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('../images/Functions/DynamicIcon.png') !important;
+    background-position:center;
+}*/
+
+   .NGDynamicSectionAdded {
+    border-style: none;
+    cursor:pointer;
+    top:0;
+    height: 25px !important;
+    /*border: none !important;*/
+    width: 25px !important;
+    /*border-radius:2px;*/
+    background-color: transparent !important;
+    /*background-repeat: no-repeat !important;*/
+    background-image: none !important;
+    background-position:center;
+    border: 1px dashed #ff0000; 
+    animation: blink .5s step-end infinite alternate;
+}
+
+   /* .NGDynamicSection:hover, NGDynamicSection:active, NGDynamicSection:focus {
+        height: 25px !important;
+        cursor:pointer;
+        top:0;
+        width: 25px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        /*border-radius:2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('../images/Functions/DynamicIcon.png') !important;
+        background-position:center;
+    }*/
+
+

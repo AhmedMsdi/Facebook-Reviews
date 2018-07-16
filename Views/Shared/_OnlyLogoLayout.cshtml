@@ -1,0 +1,84 @@
+﻿@{
+    bool IsArrowSpecific = ((System.Configuration.ConfigurationManager.AppSettings["ArrowSpecific"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["ArrowSpecific"].ToString().ToLower() == "yes") : false);
+    bool IsToshibaSpecific = ((System.Configuration.ConfigurationManager.AppSettings["ToshibaSpecific"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["ToshibaSpecific"].ToString().ToLower() == "yes") : false);
+    string InstanceName = (System.Configuration.ConfigurationManager.AppSettings["IntanceName"] != null) ? System.Configuration.ConfigurationManager.AppSettings["IntanceName"].ToString() : "Atreemo";
+    string InstanceFavicon = (System.Configuration.ConfigurationManager.AppSettings["IntanceFavicon"] != null) ? System.Configuration.ConfigurationManager.AppSettings["IntanceFavicon"].ToString() : "favicon.png";
+    string InstanceLogoWhite = (System.Configuration.ConfigurationManager.AppSettings["InstanceLogoWhite"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceLogoWhite"].ToString() : "../Content/images/Logo/AtreemoLogoWhite.png";
+    string ClientName = (System.Configuration.ConfigurationManager.AppSettings["ClientName"] != null) ? System.Configuration.ConfigurationManager.AppSettings["ClientName"].ToString().ToLower() : "";
+}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@(string.IsNullOrEmpty(@ViewBag.Title) ? "" : @ViewBag.Title + " - " ) @InstanceName</title>
+    <link rel="apple-touch-icon" href="/@InstanceFavicon" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/bootstrap")
+ 
+    <link rel="stylesheet" href="~/Content/Back To Top/css/style.css" /> <!-- Gem style -->
+    <link href="~/Content/fontawesome.css" rel="stylesheet" />
+    <script src="~/Scripts/ResponsiveGridColumns.js"></script>
+    <script src="~/Scripts/functions.js?v=12"></script>
+    <script src="~/Content/CSSMenu/script.js?v=22"></script>
+    @*@{
+        Html.RenderPartial("~/Views/UserControls/_RenderMenu.cshtml");
+    }*@
+    <link href="~/Content/CSSMenu/styles.css?v=22" rel="stylesheet" />
+</head>
+<body>
+
+  
+
+    @{
+        System.Resources.ResourceManager rm1 = Atreemo.Resources.Atreemo.ResourceManager;
+        System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Atreemo.Views.Tools.Functions.GetCultureName());
+        string ControllerName = @HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+        string ViewName = @HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+    }
+    <div>
+
+        <div id="MenuContainer">
+            <div id='cssmenu'>
+                <ul>
+                    <li id="HomeLogoImage">
+                        <img src="@InstanceLogoWhite" onclick="GoHome()" style="cursor: pointer;height: 52px; @if(!IsArrowSpecific) { @Html.Raw("padding: 5px;") } " title="Home" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br />
+        <div id="SiteBody" class="StretchSiteBody">
+            <div id="MainBody">
+                <br />
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    
+    <footer class="CopyRightfooter">
+        <div style="margin-top:5px">
+            <span>@InstanceName</span>  &copy; @DateTime.Now.Year
+        </div>
+    </footer>
+
+    <style type="text/css">
+        .CopyRightfooter{
+            display:none !important;
+        }
+        #SiteBody{
+            border:none !important;
+        }
+    </style>
+    <br />
+    <a href="#0" class="cd-top">Top</a>
+
+    <script src="~/Content/Back To Top/js/main.js"></script> <!-- Gem jQuery -->
+
+    @RenderSection("scripts", required: false)
+    </div>
+</body>
+</html>

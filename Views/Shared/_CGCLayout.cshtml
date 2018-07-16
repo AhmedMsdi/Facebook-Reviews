@@ -1,0 +1,52 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Atreemo</title>
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/functions.js")
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <link rel="stylesheet" href="~/Content/Back To Top/css/style.css" /> <!-- Gem style -->
+    <script src="~/Content/Back To Top/js/modernizr.js"></script> <!-- Modernizr -->
+    <link rel="stylesheet" href="~/Content/slidebars.css">
+</head>
+<body>
+    @Html.Action("NotificationControl", "UserControls")
+    <table style="max-width:1200px;" align="center">
+        <tr>
+            <td>
+                <table cellpadding="15" cellspacing="15" width="100%">
+                    <tr>
+                        <td style="width:50%;text-align:left" valign="top">
+                            <img src="~/Content/images/CGC/CGC_Events.png" />
+                        </td>
+                        <td style="width: 50%; text-align: right" valign="top">
+                            <img src="~/Content/images/CGC/RACECOURSE_BEVERLEY.png" />
+                        </td>
+                    </tr>
+                </table>
+                <div id="sb-site">
+                    <div class="container body-content" id="container">
+                        <div style="border-style: solid; border-width: 1px; border-color: #eeeeee; margin: 5px; padding-right: 10px;padding-left:10px;padding-top:10px;">
+                            @RenderBody()
+                        </div>
+                        <footer></footer>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+
+    <a href="#0" class="cd-top">Top</a>
+    <script src="~/Content/Back To Top/js/main.js"></script> <!-- Gem jQuery -->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

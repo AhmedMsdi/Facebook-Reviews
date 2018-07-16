@@ -1,0 +1,59 @@
+﻿@{
+    string ClientName = (System.Configuration.ConfigurationManager.AppSettings["ClientName"] != null) ? System.Configuration.ConfigurationManager.AppSettings["ClientName"].ToString().ToLower() : "";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/bootstrap")
+    <link rel="stylesheet" href="~/Content/Back To Top/css/style.css" /> <!-- Gem style -->
+    <script src="~/Scripts/ResponsiveGridColumns.js"></script>
+    <script src="~/Scripts/functions.js?v=12"></script>
+</head>
+<body>
+
+    @{
+        if (@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower() != "help")
+        {
+            @Html.Action("NotificationControl", "UserControls")
+        }
+        Html.RenderPartial("~/Views/UserControls/_DetailTemplates.cshtml");
+    }
+
+    @{
+        System.Resources.ResourceManager rm1 = Atreemo.Resources.Atreemo.ResourceManager;
+        System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Atreemo.Views.Tools.Functions.GetCultureName());
+        string ControllerName = @HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+        string ViewName = @HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+    }
+
+    <div>
+        <div id="SiteBody" class="StretchSiteBody">
+            <div id="MainBody">
+                <br />
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+   
+    <style type="text/css">
+        #SiteBody {
+            border: none !important;
+           /* min-height: 300px !important;*/
+            padding-bottom: 0px !important;
+        }
+    </style>
+    <br />
+    <a href="#0" class="cd-top">Top</a>
+
+    <script src="~/Content/Back To Top/js/main.js"></script> <!-- Gem jQuery -->
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

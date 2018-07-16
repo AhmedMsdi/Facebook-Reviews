@@ -1,0 +1,49 @@
+﻿.webGrid {
+    margin: 10px;
+    border-collapse: collapse;
+    width: 600px;
+    background-color: white;
+}
+
+.header {
+    background-color: #FF9900;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.webGrid th, .webGrid td {
+    border: 1px solid #C0C0C0;
+    padding: 5px;
+}
+
+.alt {
+    background-color: #FFE0B2;
+}
+
+.edit-mode {
+    width: 200px;
+}
+
+.btnCustomerPV {
+    width: 120px;
+    height: 30px;
+    background-color: #FF9900;
+    color: #ffffff;
+    margin-left: 10px;
+}
+
+.createDiv {
+    margin: 40px;
+}
+
+h3 {
+    margin-left: 200px;
+}
+
+.action {
+    width: 70px;
+}
+
+.customerId {
+    width: 100px;
+}

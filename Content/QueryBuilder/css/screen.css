@@ -1,0 +1,519 @@
+
+body
+{
+	background: #fff;
+	color: #393939;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0px;
+	margin: 0;
+}
+.Header
+{
+	background: url(../images/top_bg.jpg) top center repeat-x;
+	border-bottom: 1px solid #7e7e7e;
+	height: 92px;
+}
+.HeaderContain
+{
+	margin: 0 auto;
+	max-width: 1260px;
+	min-width: 850px;
+	position: relative;
+}
+.HeaderLeft
+{
+	float: left;
+	margin: 45px 0 0 15px;
+}
+.HeaderLeft a
+{
+	display: block;
+}
+.HeaderRight
+{
+	display: inline;
+	float: right;
+	position: relative;
+	margin: 5px 20px 0 0;
+	z-index: 20;
+}
+.BodyContain
+{
+	background: url(../images/content_repeat.jpg) repeat-x;
+}
+.Contain
+{
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	margin: 0 auto 0 auto;
+	max-width: 1260px;
+	min-width: 780px;
+	padding: 10px 0px 5px 0px;
+}
+.HeaderTextClass
+{
+	color: #6d0000;
+	font-size: 13px;
+	font-weight: bold;
+	line-height:30px;
+	}
+
+.TextBody
+{
+	font-size: 12px;
+	line-height: 12px;
+	padding: 10px 0 20px 0;
+}
+.TdBody
+{
+	padding: 0px 5px 0px 5px;
+}
+.HeaderPage
+{
+	margin: 0 0 15px 20px;
+}
+/*  NAVIGATION ----------------------------------------------- */
+.NavBar
+{
+	background: url(../images/repeat.jpg) repeat-x;
+	height: 38px;
+}
+.NavBarDim
+{
+	margin: 0 auto;
+	max-width: 1260px;
+	min-width: 850px;
+}
+.NavRight
+{
+	float: right;
+	position: relative;
+	width: 140px;
+	z-index: 0;
+}
+.NavRight a
+{
+	display: block;
+	float: left;
+	margin: 0px 0 0 0;
+}
+.MenuSurvey
+{
+    background: #454545 url(../images/account_drop_bg.gif) no-repeat bottom;
+	display: none;
+	padding-bottom: 15px;
+	position: absolute;
+	top: 130px;
+	margin-left: 539px;
+	width: 170px;
+	z-index: 999;
+}
+.MenuSurveyTitle
+{
+    cursor: pointer;
+	display: block;
+	float: left;
+	margin: 10px 5px 0 5px;
+}
+.MenuSearch
+{
+	background: #454545 url(../images/account_drop_bg.gif) no-repeat bottom;
+	display: none;
+	padding-bottom: 15px;
+	position: absolute;
+	top: 130px;
+	width: 170px;
+	z-index: 999;
+}
+.MenuSegment
+{
+	background: #454545 url(../images/account_drop_bg.gif) no-repeat bottom;
+	display: none;
+	padding-bottom: 15px;
+	position: absolute;
+	top: 130px;
+	margin-left: 90px;
+	width: 170px;
+	z-index: 999;
+}
+.MenuNew
+{
+    background: #454545 url(../images/account_drop_bg.gif) no-repeat bottom;
+	display: none;
+	padding-bottom: 15px;
+	position: absolute;
+	top: 130px;
+	margin-left: 195px;
+	width: 170px;
+	z-index: 999;
+}
+.MenuAdmin
+{
+	background: #454545 url(../images/account_drop_bg.gif) no-repeat bottom;
+	display: none;
+	padding-bottom: 15px;
+	position: absolute;
+	top: 130px;
+	margin-left: 355px;
+	width: 170px;
+	z-index: 999;
+}
+.MenuRadio
+{
+	background: #454545 url(../images/BgRadioButton.png) no-repeat bottom;
+	display: none;
+	padding-bottom: 15px;
+	position: absolute;
+	top: 66px;
+	width: 170px;
+	margin-left: 4px;
+	z-index: 999;
+}
+.MenuSearchTitle
+{
+	cursor: pointer;
+	display: block;
+	float: left;
+	margin: 10px 5px 0 5px;
+}
+.MenuSegmentTitle
+{
+	cursor: pointer;
+	display: block;
+	float: left;
+	margin: 10px 5px 0 5px;
+}
+.MenuAdminTitle
+{
+	cursor: pointer;
+	display: block;
+	float: left;
+	margin: 10px 5px 0 5px;
+}
+.select
+{
+	position: absolute;
+	width: 158px; /* With the padding included, the width is 190 pixels: the actual width of the image. */
+	height: 21px;
+	padding: 0 24px 0 8px;
+	color: #fff;
+	font: 12px/21px arial,sans-serif;
+	background: url(select.png) no-repeat;
+	overflow: hidden;
+}
+.MenuRFMTitle
+{
+	cursor: pointer;
+	display: block;
+	float: left;
+	margin: 10px 5px 0 5px;
+}
+.MenustatsTitle
+{
+	cursor: pointer;
+	display: block;
+	float: left;
+	margin: 10px 5px 0 5px;
+}
+.MenuRadioTitle
+{
+	cursor: pointer;
+	display: block;
+	float: left;
+	margin: 10px 5px 0 5px;
+}
+
+.MenuAboutTitle
+{
+    cursor: pointer;
+	display: block;
+	float: left;
+	margin: 10px 5px 0 5px;
+}
+.MenuSupportTitle
+{
+    cursor: pointer;
+	display: block;
+	float: left;
+	margin: 10px 5px 0 5px;
+}
+.MenuNewTitle
+{
+    cursor: pointer;
+	display: block;
+	float: left;
+	margin: 10px 5px 0 5px;
+}
+.account-drop-inner
+{
+	font-size: 0px;
+	line-height: 0px;
+	margin: 20px auto 0 auto;
+	width: 140px;
+}
+
+.account-drop-inner a
+{
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 16px;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	text-decoration: none;
+}
+.account-drop-inner a:hover
+{
+	color: #ff1414;
+	text-decoration: none;
+}
+.acc-line
+{
+	background: url(../images/account_line.gif) no-repeat 0 7px;
+	font-size: 0px;
+	height: 14px;
+	line-height: 0px;
+	margin-top: 0px;
+	padding: 0;
+}
+
+a#logout
+{
+	margin: 10px 0 0 5px;
+}
+a.acc-settings
+{
+	background: url(../images/icon_acc_settings.png) no-repeat 0 2px;
+	padding: 0 0 0 20px;
+}
+a.acc-details
+{
+	background: url(../images/icon_acc_personal.png) no-repeat 0 2px;
+	padding: 0 0 0 20px;
+}
+a.acc-PM
+{
+	background: url(../images/icon_acc_projects.png) no-repeat 0 2px;
+	padding: 0 0 0 20px;
+}
+a.acc-hh
+{
+	background: url(../images/icon_acc_hh.png) no-repeat 0 2px;
+	padding: 0 0 0 20px;
+}
+a.acc-ii
+{
+	background: url(../images/import.png) no-repeat 0 2px;
+	padding: 0 0 0 20px;
+}
+a.acc-acrmasset
+{
+    background: url(../images/AssetIcon.png) no-repeat 0 2px;
+	padding: 0 0 0 20px;
+}
+a.acc-SMS
+{
+    background: url(../images/smsicon.png) no-repeat 0 2px;
+	padding: 0 0 0 20px;
+}
+a.acc-acrmtask
+{
+    background: url(../images/ClockIcon.png) no-repeat 0 2px;
+	padding: 0 0 0 20px;
+}
+.nav-divider
+{
+	background: url(../images/divider.jpg) top no-repeat;
+	float: left;
+	height: 40px;
+	width: 15px;
+}
+
+.SelectedHead
+{
+	background: url(../images/BackImgSel.gif);
+	color: #fff;
+	display: block;
+	float: left;
+	height: 37px;
+	padding: 0 6px 0 6px;
+	text-decoration: none;
+	white-space: nowrap;
+}
+/* FOOTER -------------------------------------------------------------- */
+.Footer
+{
+	height: 70px;
+	margin: 80px auto 0px auto;
+	padding: 0px 0 0 0;
+	text-align: left;
+	min-width: 100%;
+	max-width: 100%;
+}
+.FooterLeft
+{
+	color: #818181;
+	font-size: 11px;
+	line-height: 11px;
+	padding: 15px 0 15px 25px;
+	margin: 0 20px;
+	border-top: 1px solid #dbdbdb;
+	border-bottom: 1px solid #dbdbdb;
+}
+/* GENERAL --------------------------------------------------------*/
+
+.clear
+{
+	clear: both;
+	font-size: 0px;
+	height: 0;
+	line-height: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+img
+{
+	border: 0;
+}
+/*BUTTON STYLE------------------------------------------------------------*/
+.ButtonStyle
+{
+	-moz-border-bottom-colors: none;
+	-moz-border-image: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	line-height: 18px;
+	margin-bottom: 0;
+	padding: 2px 10px 4px;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #6d0000;
+	background-image: -moz-linear-gradient(center top , #6d0000, #000000);
+	background-repeat: repeat-x;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	border-radius: 0 0 0 0;
+	font-family: "gothamBold";
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration:none;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	font-family: Verdana;
+}
+
+.ButtonStyle:hover
+{
+	-moz-transition: background-position 0.1s linear 0s;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	background-color: #000000;
+	background-position: 0 -15px;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 500;
+	font-family: Verdana;
+}
+/*------Input Style-----------------*/
+.inputStyle
+{
+	background-color: #d8d5d5;
+	border: none;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	display: inline;
+	vertical-align: top;
+}
+.textareaStyle
+{
+	background-color: #D8D5D5;
+	border: medium none;
+}
+select
+{
+	border: 1px solid #AAA;
+	color: #555;
+	font-size: inherit;
+	margin: 0;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+/*----*/
+.LinkAdvancedOp
+{
+	text-decoration: underline;
+	cursor: pointer;
+}
+/**/
+.TdSpace
+{
+	padding: 2px;
+}
+/**/
+.buttonStyle
+{
+	font-size: 11px;
+	font-family: "Trebuchet MS" ,Verdana, Helvetica, Arial;
+	height: 25px;
+	width: 75px;
+	background-color: #000;
+	background: transparent url('../images/BackButton.png') scroll top;
+	background-repeat: repeat-x;
+	border-width: 0px;
+	cursor: pointer;
+	color: #f3f3f3;
+	padding-bottom: 2px;
+}
+.buttonStyle:hover
+{
+	background: transparent url('../images/BackButton.png') scroll bottom;
+}
+
+.StyleRule
+{
+	-moz-border-bottom-colors: none;
+	-moz-border-image: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	line-height: 18px;
+	margin-bottom: 0;
+	padding: 2px 4px 4px;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #008624;
+	background-image: -moz-linear-gradient(center top , #008624, #000000);
+	background-repeat: repeat-x;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	border-radius: 0 0 0 0;
+	font-family: "gothamBold";
+	font-weight: normal;
+	color: #FFFFFF;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	font-family: Verdana;
+}
+.StyleRule:hover
+{
+	-moz-transition: background-position 0.1s linear 0s;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	background-color: #005918;
+	background-position: 0 -15px;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 500;
+	font-family: Verdana;
+}

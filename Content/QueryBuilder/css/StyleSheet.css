@@ -1,0 +1,483 @@
+/* base config */
+*{
+    padding:0;
+    margin:0;
+}
+
+body, p, td, th, div{
+    font-family: Arial, Helvetica, sans-serif;	
+    font-size: 11px;
+    margin:0;
+    padding:0;
+}
+
+table{
+    border-spacing:0px;
+    border:none;
+}
+
+div{
+    display:block;
+}
+
+img{
+    border:none;
+}
+
+/**/
+
+/* load fonts */
+@font-face {
+	font-family: 'Conv_segoeuil';
+	src: url('fonts/segoeuil.eot');
+	src: local('â?º'), url('fonts/segoeuil.ttf') format('truetype'), url('fonts/segoeuil.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/**/
+input {
+	font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	padding: 2px 0 2px 0 ;
+}
+textarea {
+	font-family: Verdana, "Courier New", Geneva, Arial, Helvetica,  sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+
+/*setting to all page */
+#main{
+    width:1174px;
+    background: #fff;
+    margin:auto;
+    padding-top:10px;
+}
+
+/* title */
+.IndexTitle{
+    float: left;
+    background: url('images/logo.png') no-repeat;
+    padding: 0 0 6px 60px;
+    color: #3A94D4;
+    font: bold 25px Trebuchet MS, Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+}
+
+.IndexTitle a{
+    color: #3A94D4 !important;
+    text-decoration: none;
+}
+
+.IndexTitle a:hover{
+    text-decoration:underline;
+}
+
+/* sub-title*/
+.IndexTitle div{
+	font-weight: bold;
+	color: #3a94d4;	
+}
+
+/* header */
+.header{
+    display:block;
+    height:70px;
+}
+
+/* buttons in header */
+.headerButtons{
+    display:inline-block;
+    padding-top: 2px;
+    padding-left:328px;
+}
+
+/* clear button in header */
+.clearButton{
+    background: url('images/clearButton.png') no-repeat;
+    border:none;
+    font-family:Segoe UI;
+    font-size:15px;
+    color:#fff;
+    width:135px;
+    height:32px;
+    cursor:pointer;
+}
+
+/* save button in header */
+.saveButton{
+    background: url('images/saveButton.png') no-repeat;
+    border:none;
+    font-family:Segoe UI;
+    font-size:15px;
+    color:#fff;
+    width:135px;
+    height:32px;
+    padding-left:25px;
+    margin-left:10px;
+    cursor:pointer;
+}
+
+
+/* content */
+#content{
+    background: #f6f6f6;
+    border:2px solid #dedede;
+    padding:20px;
+}
+
+/* all colum Entities */
+.eqdax-entitiesPanel {
+    width: 286px;
+    border: 1px solid #b7b3b0;
+    display: inline-block;
+    background: white;
+    _overflow:hidden;
+    *zoom:1;
+    *display:inline;
+}
+
+/* right blocks */
+.eqdax-rightBlocks {
+    display:inline-block;
+    vertical-align:top;
+    _overflow:hidden;
+    *width: 840px;
+    *zoom:1;
+    *display:inline;
+}
+/* div - results and colums sorting */
+.eqdax-columnsBlock {
+    display:inline-block;
+    vertical-align:top;
+}
+
+/* result column div */
+.eqdax-resultColumn{
+    display: inline-block;
+    width: 467px;
+    height: 189px;
+    margin-left: 16px;
+    background: white;
+    border: 1px solid #C1D5E4;
+    font-size: 20px;
+    font-family: 'Conv_segoeuil',Sans-Serif;
+    font-weight: normal;
+    color: #4F4F4F;
+    _overflow:hidden;
+    *zoom:1;
+    *display:inline;
+}
+
+/* div - column sorting */
+.eqdax-columnSorting-block{
+    display: inline-block;
+    width: 330px;
+    height: 189px;
+    margin-left: 16px;
+    background: white;
+    border: 1px solid #C1D5E4;
+    _overflow:hidden;
+    *zoom:1;
+    *display:inline;
+}
+
+/* border -top in result colum */
+.eqdax-topBorder-block{
+    background: #5a5a5a;
+    height: 6px;
+}
+
+/* top border in entities column */
+.eqdax-entitiesBorder{
+    background: #b7b3b0;
+    height: 6px;
+}
+
+/* content bot - sql and query result */
+.eqdax-resultBlock{
+    padding-top: 20px;
+}
+
+/* sql column div */
+#eqdax-sqlPanel{
+    width: 286px;
+    height: 270px;
+    border: 1px solid #b7b3b0;
+    display: inline-block;
+    background: white;
+    vertical-align: top;
+    _overflow:hidden;
+    *zoom:1;
+    *display:inline !important;
+}
+
+/* top border Sql panel */
+.eqdax-topBorderSQL{
+    background: #A8ABAD;
+    height: 6px;
+}
+
+/* top border all result */
+.eqdax-topBorderUpdatePanel{
+    background: #6D0000;
+    height: 6px;
+}
+
+/* language - top */
+.comboLang{
+    text-align:right;
+    font-family:Calibri;
+    font-size:11px;
+    padding-bottom:10px;
+}
+/* version text */
+.version{
+    color: #aeaeae;
+    font-size: 11px;
+    font-family: Calibri;
+    padding-left:70px;
+}
+
+/* margin & padding for ff */
+button::-moz-focus-inner { 
+    border: 0;
+    padding: 0;
+}
+/**/
+
+/* new css*/
+.eqdax-resultColumn-title{
+    font:100 18pt "Segoe UI Light", "Segoe Light", "Segoe UI", Arial, Helvetica, sans-serif;
+    float:left;
+    padding:0 0 0 10px;
+    zoom:1;
+    *display:block;
+    *position:absolute;
+}
+
+.eqdax-columnSorting-title{
+    font:100 18pt "Segoe UI Light", "Segoe Light", "Segoe UI", Arial, Helvetica, sans-serif;
+    float:left;
+    padding:0 0 0 10px;
+    color: #4F4F4F;
+    zoom:1;
+    *display:block;
+    *position:absolute;
+}
+
+.eqdax-queryConditions-title{
+    font:100 18pt "Segoe UI Light", "Segoe Light", "Segoe UI", Arial, Helvetica, sans-serif;
+    float:left;
+    padding:0 0 0 10px;
+    zoom:1;
+    *display:block;
+    *position:absolute; 
+}
+
+.eqdax-entitiesTitle{
+    font: 100 18pt "Segoe UI Light", "Segoe Light", "Segoe UI", Arial, Helvetica, sans-serif;
+    color: #4F4F4F;
+    padding:0 0 10px 10px;
+    background: #F8F7F7;
+    border-bottom: 1px solid #b7b3b0;
+}
+
+.eqdax-resultPanel-title{
+    font: 100 18pt "Segoe UI Light", "Segoe Light", "Segoe UI", Arial, Helvetica, sans-serif;
+    padding: 4px 0 0 10px;
+    color: #4F4F4F;
+}
+
+.eqdax-sqlTitle{
+    font: 100 18pt "Segoe UI Light", "Segoe Light", "Segoe UI", Arial, Helvetica, sans-serif;
+    color: #4F4F4F;
+    padding: 0 0 8px 10px;
+    background: #F8F7F7;
+    border-bottom: 1px solid #A8ABAD;
+}
+
+.eqdax-conditionsPanel {
+    background: white;
+    height: 194px;
+    margin: 17px 0 0 16px;
+    border: 1px solid #C1D5E4;
+    color: #4F4F4F;
+    width: 818px;
+}
+
+.eqdax-resultPanel-actions{
+    float:right;
+    padding-top:8px;    
+}
+
+.eqdax-resultPanel-updateButton{
+    background-image: url('images/updateResultButton.png');
+    background-color: transparent;
+    background-position: center left;
+    background-repeat: no-repeat;
+    border: none;
+    color: #6D0000;
+    font: normal 16px Calibri;
+    text-decoration: underline;
+    padding-left: 25px;
+    margin-right: 20px;
+    cursor: pointer;
+    zoom:1;
+    *padding-left:5px;
+}
+
+.eqdax-resultPanel-exportButton{
+    background-image: url('images/exportResultButton.png');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center left;
+    border: none;
+    color: #6D0000;
+    font: normal 16px Calibri;
+    text-decoration: underline;
+    padding-left: 25px;
+    padding-right: 10px;
+    cursor: pointer;
+    zoom:1;
+    *padding-left:5px;
+}
+
+.eqdax-updatePanel-bottomBorder{
+    background: #F8F7F7;
+    border-bottom: 1px solid #6D0000;
+    padding:0 0 4px 0;
+}
+
+#PanelResult{
+    height: 200px;
+    width:800px;
+    overflow: auto;
+    margin: 10px 10px 0 10px;
+}
+
+.eqdax-entities-table{
+    padding: 2px 0 0;
+}
+.eqdax-entities-table img{
+    padding:0 6px 0 0;
+}
+
+.copyright{
+    text-align:center;
+    display:block;
+    font-size:12px;
+    font-family:Calibri;
+    color:#000;
+    padding-top:14px;
+}
+
+.copyright a{
+    color:#6D0000 !important;
+}
+
+/*new name's eqdax style */
+.eqdax-resultColumn-addRow{
+    border-bottom: 1px solid #5a5a5a;
+    height: 35px;
+}
+.eqdax-resultColumn-addRow span{
+    float: right;
+    padding: 10px 10px 0 0;
+}
+.eqdax-resultColumn-addRow span a{
+    padding: 4px 0 4px 27px;
+    padding: 4px 0 6px 27pxurl(0/IE9);
+    background: url('images/addNew.png') no-repeat center left;
+    font: normal 15px Calibri;
+    color: #5a5a5a;
+}
+
+.eqdax-columnSorting-addRow{
+    border-bottom: 1px solid #5a5a5a;
+    height: 35px;
+}
+.eqdax-columnSorting-addRow span{
+    float: right;
+    padding: 10px 10px 0 0;
+}
+.eqdax-columnSorting-addRow span a{
+    padding: 5px 0 5px 25px;
+    padding: 5px 0 7px 25pxurl(0/IE9);
+    background: url('images/addNew.png') no-repeat center left;
+    font: normal 15px Calibri;
+    color: #5a5a5a;
+}
+
+.eqdax-queryCondition-addRow{
+    border-bottom: 1px solid #5a5a5a;
+    height: 35px;
+    background: #F8F7F7;
+}
+.eqdax-queryCondition-addRow span{
+    float: right;
+    padding: 10px 10px 0 0;
+}
+.eqdax-queryCondition-addRow span a{
+    padding: 5px 0 4px 25px;
+    background: url('images/addNew.png') no-repeat center left;
+    font: normal 15px Calibri;
+    color: #5a5a5a;
+}
+
+.eqdax-sqlPanel-block{
+    padding: 7px 10px;
+    width: 270px;
+}
+.eqdax-sqlPanel-textBox{
+    resize: none;
+    outline: none;
+    border: none;
+    border-width: 0px;
+    height: 208px;
+    width: 98%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.eqdax-resultTable{
+    display: inline-block;
+    background: white;
+    /*margin-left: 16px;*/
+    border: 1px solid #C1D5E4;
+    width: 1126px;
+    /*height: 270px;*/
+    overflow:auto;
+    *zoom:1;
+    *display:inline !important;
+}
+
+.header-right-side{
+    float: right;
+}
+
+.error-label{
+    color: Red;
+    font-weight: bold;
+}
+
+#EntitiesPanel1{
+    height: 351px !important;
+    width: 250px !important;
+}
+
+#QueryColumnsPanel1{
+    height: 128px !important;
+    width: 467px !important;
+}
+
+#SortColumnsPanel1{
+    height: 128px !important;
+    width: 330px !important;
+}
+
+#QueryPanel1{
+    height: 133px !important;
+    width: 818px !important;
+}

@@ -1,0 +1,140 @@
+﻿@model Atreemo.Models.ExternalLoginConfirmationViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+    bool IsArrowSpecific = ((System.Configuration.ConfigurationManager.AppSettings["ArrowSpecific"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["ArrowSpecific"].ToString().ToLower() == "yes") : false);
+    string InstanceHomeLogoPath = ((System.Configuration.ConfigurationManager.AppSettings["InstanceHomeLogoPath"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceHomeLogoPath"].ToString() : "");
+    string InstanceHomeLogoLink = ((System.Configuration.ConfigurationManager.AppSettings["InstanceHomeLogoLink"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceHomeLogoLink"].ToString() : "");
+    string InstanceHomeBannerPath = ((System.Configuration.ConfigurationManager.AppSettings["InstanceHomeBannerPath"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceHomeBannerPath"].ToString() : "");
+    bool IsToshibaSpecific = ((System.Configuration.ConfigurationManager.AppSettings["ToshibaSpecific"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["ToshibaSpecific"].ToString().ToLower() == "yes") : false);
+    bool InstanceHomeBannerAsDivBackgroundImage = ((System.Configuration.ConfigurationManager.AppSettings["InstanceHomeBannerAsDivBackgroundImage"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["InstanceHomeBannerAsDivBackgroundImage"].ToString().ToLower() == "yes") : false);
+    string InstanceName = (System.Configuration.ConfigurationManager.AppSettings["IntanceName"] != null) ? System.Configuration.ConfigurationManager.AppSettings["IntanceName"].ToString() : "Atreemo";
+    string InstanceFavicon = (System.Configuration.ConfigurationManager.AppSettings["IntanceFavicon"] != null) ? System.Configuration.ConfigurationManager.AppSettings["IntanceFavicon"].ToString() : "favicon.png";
+    string InstanceLogo = (System.Configuration.ConfigurationManager.AppSettings["InstanceLogo"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceLogo"].ToString() : "../Content/images/Logo/AtreemoLogo.png";
+    string ADFS = (System.Configuration.ConfigurationManager.AppSettings["ida:ADFSCaption"]);
+
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>@(string.IsNullOrEmpty(@ViewBag.Title) ? "" : @ViewBag.Title + " - ") @InstanceName</title>
+    <link rel="apple-touch-icon" href="/@InstanceFavicon" />
+    <link href="../Content/LoginStyle/darktheme/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/LoginStyle/darktheme/css/main.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../Content/LoginStyle/Moneyween/font/css/font-awesome.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        /* Set password Icon Width*/
+        .fa-lock {
+            width: 11px !important;
+        }
+
+        .input-group-addon {
+            background-color: white !important;
+        }
+
+
+        body {
+            line-height: 42px;
+            font-family: 'Source Sans Pro', sans-serif;
+            margin: 0;
+            background-color: #FFFFFF;
+        }
+
+        .Top-LinkBox {
+            padding: 15px !important;
+        }
+
+        .Top-Link {
+            font-size: 1.2em;
+            color: gray !important;
+        }
+
+        .MainBox {
+            height: 614px;
+            margin: 0;
+        }
+
+            .MainBox > img {
+                width: 100%;
+                /*min-width: 700px;*/
+            }
+
+        .TitleLoginBox {
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .Title {
+            font-size: 3.5em;
+            color: white;
+            font-weight: bold;
+            margin-top: 24px;
+            margin-left: 20px;
+        }
+
+        .AuthentificationBox {
+            max-width: 562px;
+            min-height: 336px;
+            background-color: red;
+            border: 1px solid #ddd;
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 25px;
+            /*margin-left: 120px;*/
+        }
+
+
+        .Footer {
+            color: #6D6D6D;
+            padding: 10px 0;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+
+        table {
+            line-height: 15px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>@ViewBag.Title.</h2>
+    <h3>Associate your @ViewBag.LoginProvider account.</h3>
+
+    @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <h4>Association Form</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <p class="text-info">
+            You've successfully authenticated with <strong>@ViewBag.LoginProvider</strong>.
+            Please enter a user name for this site below and click the Register button to finish
+            logging in.
+        </p>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Register" />
+            </div>
+        </div>
+    }
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "SMTPTester";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SMTP Tester</h2>
+
+<table>
+    <tr>
+        <td>
+            Email:
+        </td>
+        <td>
+            <input type="text" id="EmailValue" class="k-input" style="width:250px;max-width:250px;min-width:250px"  />
+        </td>
+        <td>
+            <input type="button" class="k-button" value="Send Error" onclick="SendEmail(false)" />
+        </td>
+        <td>
+            <input type="button" class="k-button" value="Send Notification" onclick="SendEmail(true)" />
+        </td>
+        <td>
+            <div style="width: 100%; text-align: center; color: red" id="ErrorInfoMessage"></div>
+        </td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+    function SendEmail(IsNotification) {
+        document.getElementById("ErrorInfoMessage").style.color = "red";
+        if (validateEmail($('#EmailValue').val())) {
+            $("#ErrorInfoMessage").empty();
+            $.ajax({
+                type: 'POST',
+                url: "/Account/SendEmail",
+                data: {
+                    'Email': $('#EmailValue').val(),
+                    'IsNotification': IsNotification
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data = "Success") {
+                        document.getElementById("ErrorInfoMessage").style.color = "green";
+                    }
+                    $("#ErrorInfoMessage").empty().append(data);                    
+                },
+                error: function (data) {
+                    $("#ErrorInfoMessage").empty().append("Something seems wrong");
+                }
+            });
+        }
+        else {
+            $("#ErrorInfoMessage").empty().append("Please type a valid email");
+        }
+    }
+</script>

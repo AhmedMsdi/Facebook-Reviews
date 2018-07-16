@@ -1,0 +1,44 @@
+﻿@model Atreemo.Models.fbuser
+@{
+    ViewBag.Title = "FacebookCallback";
+    Layout = "~/Views/Shared/_OnlyLogoLayout.cshtml";
+}
+
+
+
+
+<h2>FacebookCallback</h2>
+
+
+
+@Html.BeginForm("FacebookCallback2", "Home")
+{
+
+<table>
+
+
+    @for (int i = 0; i < Model.pagelist.Count; i++)
+    {
+
+        <tr>
+            <td>
+
+                @Html.CheckBoxFor(m => Model.pagelist[i].IsCheck)
+
+                @Model.pagelist[i].name
+
+                @Html.HiddenFor(m => Model.pagelist[i].id)
+                @Html.HiddenFor(m => Model.pagelist[i].access_token)
+                @Html.HiddenFor(m => Model.pagelist[i].category)
+                @Html.HiddenFor(m => Model.pagelist[i].name)
+                @Html.HiddenFor(m => Model.id)
+
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+<input type="submit" value="submit" />
+}

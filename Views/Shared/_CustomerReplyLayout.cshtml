@@ -1,0 +1,248 @@
+﻿
+@{
+    Layout = null;
+    string Client = System.Configuration.ConfigurationManager.AppSettings["ClientName"].ToString();
+}
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/functions.js")
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/bootstrap")
+    <meta name="viewport" content="width=device-width" />
+    <title>Customer Feedback</title>
+    @if (Client.ToLower() == "itsu" || Client.ToLower() == "itsu_uat" || Client.ToLower() == "bills" || Client.ToLower() == "gauchocau" || Client.ToLower() == "francomanca")
+    {
+        <link href="~/Content/CustomerReplyStyleItsu.css" rel="stylesheet" />
+    }
+    else
+    {
+        <link href="~/Content/CustomerReplyStyle.css" rel="stylesheet" />
+    }
+    
+</head>
+@if (Client.ToLower() == "acteol")
+{
+    <style>
+        body {
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+        }
+
+        .FormTitle {
+            background: #953734;
+            color: #ffffff;
+            width: 100%;
+            /* height: 50px; */
+            /*font: bold Arial,sans-serif;*/
+            font-size: 24px;
+        }
+
+        .TitleStyle {
+            padding: 10px;
+            font-weight: bold;
+        }
+    </style>
+}
+<body>
+    @if (Client.ToLower() == "itsu" || Client.ToLower() == "itsu_uat")
+    {
+        <div>
+            <table bgcolor="#ffffff" width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <!-- logo -->
+                            <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+                                <tbody>
+                                    <tr>
+                                        <td width="140" height="60" align="center">
+                                            <div class="imgpop">
+
+                                                <img src="http://itsutools.itsucomms.com/Public/images/2017/02/0001/logo.jpg" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;">
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- end of logo -->
+
+                        </td>
+                    </tr>
+                    <!-- Spacing -->
+                    <tr>
+                        <td bgcolor="#e53e96" height="5" style="font-size:1px; line-height:1px; ">&nbsp;</td>
+                    </tr>
+                    <!-- Spacing -->
+                </tbody>
+            </table>
+        </div>
+    }
+    else if (Client.ToLower() == "bills" || Client.ToLower() == "bills_uat")
+    {
+        <div>
+            <table bgcolor="#ffffff" width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <!-- logo -->
+                            <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+                                <tbody>
+                                    <tr>
+                                        <td width="140" height="60" align="center">
+                                            <div class="imgpop">
+
+                                                <img src="http://billstools.atreemo.com/Public/Images/2017/03/0005/logo.png" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;">
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- end of logo -->
+
+                        </td>
+                    </tr>
+                    <!-- Spacing -->
+                    <tr>
+                        <td bgcolor="#f27321" height="5" style="font-size:1px; line-height:1px; ">&nbsp;</td>
+                    </tr>
+                    <!-- Spacing -->
+                </tbody>
+            </table>
+        </div>
+    }
+    else if (Client.ToLower() == "slm" || Client.ToLower() == "slm_uat")
+    {
+        <div>
+            <table bgcolor="#333333" border="0" cellpadding="0" cellspacing="0" class="FixWidth k-table" height="61" width="100%"><tbody><tr><td><img alt="" class="hideOnMobile" height="61" src="http://tools.eacommunications.co.uk/Public/images/2016/03/0002/Header_01.png" width="14" /></td><td><img alt="" height="61" src="http://tools.eacommunications.co.uk/Public/images/2016/03/0002/Header_02.png" width="158" /></td><td><img alt="" class="hideOnMobile" height="61" src="http://tools.eacommunications.co.uk/Public/images/2016/03/0002/Header_03.png" width="100%" /></td><td width="29"><a href="https://www.facebook.com/everyoneactive" target="_blank"> <img alt="" height="61" src="http://tools.eacommunications.co.uk/Public/images/2016/03/0002/Header_04.png" style="border:0;" width="29" /></a> </td><td width="29"><a href="https://twitter.com/EveryoneActive" target="_blank"> <img alt="" height="61" src="http://tools.eacommunications.co.uk/Public/images/2016/03/0002/Header_05.png" style="border:0;" width="29" /></a> </td><td width="31"><a href="https://www.youtube.com/user/everyoneactive" target="_blank"> <img alt="" height="61" src="http://tools.eacommunications.co.uk/Public/images/2016/03/0002/Header_06.png" style="border:0;" width="31" /></a> </td><td><img alt="" height="61" src="http://tools.eacommunications.co.uk/Public/images/2016/03/0002/Header_07.png" width="16" /></td></tr></tbody></table>
+        </div>
+        <div class="FormTitle">
+            <div class="TitleStyle">
+                <label>Everyone Active Customer Feedback</label>
+            </div>
+        </div>
+    }
+    else if (Client.ToLower() == "gauchocau")
+    {
+        <div>
+            <table bgcolor="#ffffff" width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <!-- logo -->
+                            <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+                                <tbody>
+                                    <tr>
+                                        <td width="140" height="60" align="center">
+                                            <div class="imgpop">
+
+                                                <img src="http://giomatools.atreemo.com/Public/Images/09/0001/logo_cau.png" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;">
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- end of logo -->
+
+                        </td>
+                    </tr>
+                    <!-- Spacing -->
+                    <tr>
+                        <td bgcolor="#ef721c" height="5" style="font-size:1px; line-height:1px; ">&nbsp;</td>
+                    </tr>
+                    <!-- Spacing -->
+                </tbody>
+            </table>
+        </div>
+    }
+    else if (Client.ToLower() == "francomanca")
+    {
+        <div>
+            <table bgcolor="#ffffff" width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <!-- logo -->
+                            <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+                                <tbody>
+                                    <tr>
+                                        <td width="140" height="60" align="center">
+                                            <div class="imgpop">
+
+                                                <img src="http://francomancatools.atreemo.com/Public/Images/2018/02/0001/logo.png" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;">
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- end of logo -->
+
+                        </td>
+                    </tr>
+                    <!-- Spacing -->
+                    <tr>
+                        <td bgcolor="#232323" height="5" style="font-size:1px; line-height:1px; ">&nbsp;</td>
+                    </tr>
+                    <!-- Spacing -->
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div>
+            <table bgcolor="#ffffff" width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <!-- logo -->
+                            <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+                                <tbody>
+                                    <tr>
+                                        <td width="140" height="60" align="center">
+                                            <div class="imgpop">
+
+                                                <img src="https://tools.atreemo.com/Survey/Quiz/DisplayImg.ashx?id=32" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;">
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- end of logo -->
+
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+        <div class="FormTitle">
+            <div class="TitleStyle">
+                <label>Atreemo Feedback</label>
+            </div>
+        </div>
+    }
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,401 @@
+﻿@{
+    bool IsArrowSpecific = ((System.Configuration.ConfigurationManager.AppSettings["ArrowSpecific"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["ArrowSpecific"].ToString().ToLower() == "yes") : false);
+    bool ForceSCVAsHomePage = ((System.Configuration.ConfigurationManager.AppSettings["ForceSCVAsHomePage"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["ForceSCVAsHomePage"].ToString().ToLower() == "yes") : false);
+    string InstanceName = (System.Configuration.ConfigurationManager.AppSettings["IntanceName"] != null) ? System.Configuration.ConfigurationManager.AppSettings["IntanceName"].ToString() : "Atreemo";
+    string InstanceFavicon = (System.Configuration.ConfigurationManager.AppSettings["IntanceFavicon"] != null) ? System.Configuration.ConfigurationManager.AppSettings["IntanceFavicon"].ToString() : "favicon.png";
+    string ClientName = (System.Configuration.ConfigurationManager.AppSettings["ClientName"] != null) ? System.Configuration.ConfigurationManager.AppSettings["ClientName"].ToString().ToLower() : "";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@(string.IsNullOrEmpty(@ViewBag.Title) ? "" : @ViewBag.Title + " - ") @InstanceName</title>
+    <link rel="apple-touch-icon" href="/@InstanceFavicon" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/bootstrap")
+    <link rel="stylesheet" href="~/Content/Back To Top/css/style.css" /> <!-- Gem style -->
+    <link href="~/Content/fontawesome.css" rel="stylesheet" />
+
+    <script src="~/Scripts/ResponsiveGridColumns.js"></script>
+    <script src="~/Scripts/functions.js?v=12"></script>
+
+
+    <style>
+        .k-notification-wrap {
+            white-space: normal !important;
+        }
+    </style>
+</head>
+<body>
+
+    @{
+        int UserID = 0;
+        string Salutation = "", WelcomeMessage = "", UserName = "", SalutationID = "", FirstName = "", LastName = "", Email = "";
+        bool NeverExpires = true;
+        int? RemainingDaysBeforeExpiry = 0;
+        string RemainingDaysBeforeExpiryInLetter = "";
+        System.Resources.ResourceManager rm1 = Atreemo.Resources.Atreemo.ResourceManager;
+        Atreemo.Models.User ConnectedUser = null;
+        bool HideHomePage = true;
+        if (!string.IsNullOrEmpty(User.Identity.Name))
+        {
+            ConnectedUser = Atreemo.Views.Tools.Functions.GetUserByUserName(User.Identity.Name);
+            UserID = ConnectedUser.UserID;
+            UserName = ConnectedUser.UserFullName;
+            FirstName = ConnectedUser.FirstName;
+            LastName = ConnectedUser.LastName;
+            Email = ConnectedUser.Email;
+            NeverExpires = ConnectedUser.NeverExpires;
+            RemainingDaysBeforeExpiry = ConnectedUser.RemainingDaysBeforeExpiry;
+            if (RemainingDaysBeforeExpiry != null)
+            {
+                RemainingDaysBeforeExpiryInLetter = RemainingDaysBeforeExpiry == 0 ? "today" : (RemainingDaysBeforeExpiry == 1 ? "in " + RemainingDaysBeforeExpiry.ToString() + " day" : "in " + RemainingDaysBeforeExpiry.ToString() + " days");
+            }
+        }
+        System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Atreemo.Views.Tools.Functions.GetCultureName());
+        string ControllerName = @HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+        string ViewName = @HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+        bool IsB2C = @System.Configuration.ConfigurationManager.AppSettings["BusinessType"].ToLower().Equals("b2c");
+        string HouseholdOrCompany = (IsB2C) ? rm1.GetString("Household") : rm1.GetString("Company");
+        bool IsHomePage = false;
+
+    }
+    <div>
+
+        @*@{
+            Html.RenderPartial("~/Views/UserControls/_AtreemoMenu.cshtml");
+        }*@
+
+        <div id="megaStore">
+            @(Html.Kendo().Menu()
+      .Name("Menu")
+      .Items(items =>
+      {
+          items.Add()
+              .Text("Products")
+              .Items(children =>
+               {
+                   children.Add().Text("Furniture")
+                           .Items(innerChildren =>
+                           {
+                               innerChildren.Add().Text("Tables & Chairs");
+                               innerChildren.Add().Text("Sofas");
+                               innerChildren.Add().Text("Occasional Furniture");
+                               innerChildren.Add().Text("Childerns Furniture");
+                               innerChildren.Add().Text("Beds");
+                           });
+
+                   children.Add().Text("Decor")
+                           .Items(innerChildren =>
+                           {
+                               innerChildren.Add().Text("Bed Linen");
+                               innerChildren.Add().Text("Throws");
+                               innerChildren.Add().Text("Curtains & Blinds");
+                               innerChildren.Add().Text("Rugs");
+                               innerChildren.Add().Text("Carpets");
+                           });
+
+                   children.Add().Text("Storage")
+                           .Items(innerChildren =>
+                           {
+                               innerChildren.Add().Text("Wall Shelving");
+                               innerChildren.Add().Text("Kids Storage");
+                               innerChildren.Add().Text("Baskets");
+                               innerChildren.Add().Text("Multimedia Storage");
+                               innerChildren.Add().Text("Floor Shelving");
+                               innerChildren.Add().Text("Toilet Roll Holders");
+                               innerChildren.Add().Text("Storage Jars");
+                               innerChildren.Add().Text("Drawers");
+                               innerChildren.Add().Text("Boxes");
+                           });
+
+                   children.Add().Text("Lights")
+                           .Items(innerChildren =>
+                           {
+                               innerChildren.Add().Text("Ceiling");
+                               innerChildren.Add().Text("Table");
+                               innerChildren.Add().Text("Floor");
+                           });
+               });
+
+          items.Add().Text("Blog");
+          items.Add().Text("Company");
+          items.Add().Text("Events");
+          items.Add().Text("News").Enabled(false);
+      })
+            )
+
+        </div>
+
+        <div id="SiteBody">
+            <br />
+            <div class="bread-crumb">
+                <table width="100%">
+                    <tr>
+                        @if (IsArrowSpecific)
+                        {
+                            <td><a href="../Home/Index"><img src="~/Content/images/Arrow/SMARTappIcon.png" style="height:30px;margin:5px" /></a></td>
+                        }
+                        else
+                        {
+                            <td>@*<a href="../Home/Index"><img src="~/Content/images/Logo/LogoSmall.png" style="height:30px;margin:5px" /></a>*@</td>
+                        }
+                        <td width="100%">
+                            @{
+                                if ((ControllerName.ToLower() == "atreemohelp") || (ForceSCVAsHomePage && (ControllerName.ToLower() == "scv" && ViewName.ToLower() == "index"))
+                                    || ((ControllerName.ToLower() == "home") && !(ForceSCVAsHomePage)))
+                                {
+                         
+                                    @(Html.Kendo().Window()
+                                                .Name("HelpWindow").Width(780).Height(400).Draggable()
+                                                .Title("Getting to know " + InstanceName + " ...")
+                                                .Visible(false)
+                                                .Modal(true)
+                                    )
+                                    <script type="text/javascript">
+
+                                        var HelpWindowObject;
+                                        $(document).ready(function () {
+                                            HelpWindowObject = $("#HelpWindow").data("kendoWindow");
+
+                                            $("#HelpWindow_wnd_title.k-window-title").prepend("<img src='../Content/images/Functions/helpw.png' width='22' /> ");
+
+                                            @if (!HideHomePage)
+                                                {
+                                                    @Html.Raw("OpenHelpWindow();");
+                                                }
+
+
+                                        });
+
+                                        function OpenHelpWindow() {
+                                            HelpWindowObject.content("<div class='k-loading-mask' style='width: 100%; height: 100%; top: 0px; left: 0px;'><span class='k-loading-text'>Loading...</span><div class='k-loading-image'></div><div class='k-loading-color'></div></div>");
+                                            HelpWindowObject.refresh({
+                                                url: "../AtreemoHelp/HomePageHelp"
+                                            });
+                                            HelpWindowObject.center().open();
+
+                                        }
+
+                                        function closeHelpWindow() {
+                                            HelpWindowObject.close();
+                                        }
+                                    </script>
+
+                                }
+
+
+                                if (ForceSCVAsHomePage)
+                                {
+                                    if (!(ControllerName.ToLower() == "scv" && ViewName.ToLower() == "index"))
+                                    {
+
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-9">
+                                                @{
+                                        Html.RenderPartial("~/Views/UserControls/_PageFullPathUserControl.cshtml");
+                                                }
+                                            </div>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        if (ControllerName.ToLower() == "scv" && ViewName.ToLower() == "index")
+                                        {
+                                            IsHomePage = true;
+                                            SalutationID = Atreemo.Views.Tools.Functions.GetSalutationID(UserID).ToString();
+                                            Salutation = rm1.GetString("Salutation" + SalutationID);
+                                            WelcomeMessage = rm1.GetString("WelcomeMessage" + SalutationID);
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-9">
+                                                    <b>
+                                                        @Salutation  @(Atreemo.Tools.GlobalHelper.UppercaseFirst(UserName)),
+                                                    </b>
+                                                    @WelcomeMessage
+                                                </div>
+                                                <div style="text-align: right; padding-right: 25px" class="hidden-xs col-sm-3">
+                                                    @(Atreemo.Tools.GlobalHelper.UppercaseFirst(DateTime.Now.ToString("D", System.Threading.Thread.CurrentThread.CurrentUICulture)))
+                                                    <img src="~/Content/images/Functions/helpw.png" width="35" title="Getting to know @InstanceName" style="cursor:pointer;" onclick="OpenHelpWindow()" />
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if ((ControllerName.ToLower() != "home") && (!(ControllerName.ToLower() == "account" && ViewName.ToLower() != "index")))
+                                    {
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-9">
+                                                @{
+                                        Html.RenderPartial("~/Views/UserControls/_PageFullPathUserControl.cshtml");
+                                                }
+                                            </div>
+                                            <div style="text-align: right; padding-right: 25px" class="col-sm-3">
+                                                @if (UserID != 0)
+                                                {
+                                                    if (ConnectedUser != null && (ConnectedUser.PageActionName ?? "").ToLower().Equals(ViewName.ToLower()) && (ConnectedUser.PageControllerName ?? "").ToLower().Equals(ControllerName.ToLower()))
+                                                    {
+                                                        IsHomePage = true;
+                                                        @Html.Raw("<a style='cursor:pointer;color:blue;text-decoration:underline' onclick='InitHomePage()'>Reset Home Page</a>")
+                                                    }
+                                                    else
+                                                    {
+                                                        if (ConnectedUser != null)
+                                                        {
+                                                            @Html.Raw("<a style='cursor:pointer;color:blue;text-decoration:underline' onclick='MarkAsHomePage()'>Mark as Home Page</a>")
+                                                        }
+                                                    }
+                                                }
+                                                @*<img src="~/Content/images/Functions/helpw.png" width="35" title="Getting to know @InstanceName" style="cursor:pointer;" onclick="OpenHelpWindow()" />*@
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        if (ControllerName.ToLower() == "home")
+                                        {
+                                            IsHomePage = true;
+                                            SalutationID = Atreemo.Views.Tools.Functions.GetSalutationID(UserID).ToString();
+                                            Salutation = rm1.GetString("Salutation" + SalutationID);
+                                            WelcomeMessage = rm1.GetString("WelcomeMessage" + SalutationID);
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-9">
+                                                    <b>
+                                                        @Salutation  @(Atreemo.Tools.GlobalHelper.UppercaseFirst(UserName)),
+                                                    </b>
+                                                    <span>
+                                                        @WelcomeMessage
+                                                    </span>
+                                                </div>
+                                                <div style="text-align: right; padding-right: 25px" class="hidden-xs col-sm-3">
+                                                    @(Atreemo.Tools.GlobalHelper.UppercaseFirst(DateTime.Now.ToString("D", System.Threading.Thread.CurrentThread.CurrentUICulture)))
+                                                    <img src="~/Content/images/Functions/helpw.png" width="35" title="Getting to know @InstanceName" style="cursor:pointer;" onclick="OpenHelpWindow()" />
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                }
+                            }
+
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+            <div id="MainBody">
+                <div style="width:100%;text-align:right"></div>
+                @{
+                    if (!NeverExpires && RemainingDaysBeforeExpiry <= 14)
+                    {
+                        if (RemainingDaysBeforeExpiry <= 7)
+                        {
+                            @(Html.Kendo().Window().Name("ChangePasswordWindow").Width(560).Height(310).Draggable()
+                                .Title("Change Password")
+                                .Visible(false)
+                                .Actions(actions => actions.Clear())
+                                .Modal(true))
+                        }
+                        else
+                        {
+                            @(Html.Kendo().Window().Name("ChangePasswordWindow").Width(560).Height(310).Draggable()
+                                .Title("Change Password")
+                                .Visible(false)
+                                .Actions(actions => actions.Close())
+                                .Modal(true))
+                        }
+                        <div id="PasswordExpiryNotification" class="demo-section k-content"></div>
+                        @(Html.Kendo().Notification()
+                            .Name("PasswordExpiryNotification")
+                            .AppendTo("#PasswordExpiryNotification")
+                            .HideOnClick(false)
+                            .Button(true)
+                            .AutoHideAfter(6000000)
+                        )
+                        <br />
+                        <script>
+                            function OpenChangePasswordWindowFromLayout() {
+                                var ChangePasswordWindow = $("#ChangePasswordWindow").data("kendoWindow");
+                                ChangePasswordWindow.content("<div class='k-loading-mask' style='width: 100%; height: 100%; top: 0px; left: 0px;'><span class='k-loading-text'>Loading...</span><div class='k-loading-image'></div><div class='k-loading-color'></div></div>");
+                                ChangePasswordWindow.refresh({
+                                    url: "../Profiles/ChangePassword"
+                                });
+                                ChangePasswordWindow.center().open();
+                            }
+
+                            $(document).ready(function () {
+                                var PasswordExpiryNotification = $("#PasswordExpiryNotification").data("kendoNotification");
+                                var DaysLeft = '@RemainingDaysBeforeExpiryInLetter';
+                                PasswordExpiryNotification.show("Your password will expire " + DaysLeft + ", please ensure you update it today to avoid being locked out of the system <a href='#' onclick='return OpenChangePasswordWindowFromLayout();'>here</a>", "info");
+                                var container = $(PasswordExpiryNotification.options.appendTo);
+
+                                if ('@RemainingDaysBeforeExpiry' <= 7) {
+                                    OpenChangePasswordWindowFromLayout();
+                                }
+                            });
+                        </script>
+                        <style>
+                            #PasswordExpiryNotification .k-notification, .k-notification-info {
+                                background-color: #ffb2b2 !important;
+                                color: white !important;
+                                border-color: #ff7f7f !important;
+                            }
+                        </style>
+                    }
+                }
+                @{
+                    if ((ControllerName.ToLower() == "home") && (string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(FirstName) || string.IsNullOrWhiteSpace(LastName)))
+                    {
+                        <div id="appendto" class="demo-section k-content"></div>
+                        @(Html.Kendo().Notification()
+                            .Name("staticNotification")
+                            .AppendTo("#appendto")
+                            .HideOnClick(false)
+                            .Button(true)
+                            .AutoHideAfter(6000000)
+                        )
+                        <script>
+                            $(document).ready(function () {
+                                var staticNotification = $("#staticNotification").data("kendoNotification");
+                                staticNotification.show("It seems like your profile isn't completed. Please complete it <a href='../Account'>here</a>", "info");
+                                var container = $(staticNotification.options.appendTo);
+                            });
+                        </script>
+                        <style>
+                            #appendto .k-notification, .k-notification-info {
+                                background-color: #e5f5fa !important;
+                                color: #0487c4 !important;
+                                border-color: #b7e1f0 !important;
+                                width: 100%;
+                            }
+                        </style>
+
+                    }
+
+                }
+                @RenderBody()
+            </div>
+
+        </div>
+
+    </div>
+    <footer class="CopyRightfooter">
+        <div style="margin-top:5px">
+            <span>@InstanceName</span>  &copy; @DateTime.Now.Year
+        </div>
+    </footer>
+    <br />
+    <a href="#0" class="cd-top">Top</a>
+
+
+    <script src="~/Content/Back To Top/js/main.js"></script> <!-- Gem jQuery -->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

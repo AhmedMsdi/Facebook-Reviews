@@ -1,0 +1,28 @@
+﻿
+.SurveyTitleAdvancedDiv
+{
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    width: 700px;
+    border-color: SSTTopBar;
+    background-color:SSTTopBar ;
+    color: ColorTitle;
+    font-weight: bold;
+    height: 35px;
+    font-size: SizeTitle;
+}
+.SurveyIntroAdvancedDiv
+{
+    border-width: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    width: 1010px;
+    border-color: SSTSeconBar;
+    background-color:SSTSeconBar ;
+    color: ColorIntro;
+    height: 25px;
+    font: Arial,sans-serif;
+    font-size:sizeIntro;
+}

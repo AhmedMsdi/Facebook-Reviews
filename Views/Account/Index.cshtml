@@ -1,0 +1,943 @@
+﻿@model Atreemo.Models.User
+
+@{
+    string ControllerName = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+
+    //Atreemo.Models.Tool mTool = Atreemo.Views.Tools.Functions.GetToolByName(ControllerName);
+    //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Atreemo.Views.Tools.Functions.GetCultureName());
+    //System.Resources.ResourceManager rm = Atreemo.Resources.Atreemo.ResourceManager;
+    //ViewBag.Title = rm.GetString(mTool.Name + "_FullTitle");
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_OnlyLogoLayout.cshtml";
+    ViewBag.Message = "";
+
+    int ConnectedUserID = (int)System.Web.Security.Membership.GetUser(User.Identity.Name, true).ProviderUserKey;
+    List<Atreemo.Views.Tools.Functions.ToolActionAuthorization> toolActions = Atreemo.Views.Tools.Functions.GetActionsAuthorization(ConnectedUserID, 17);
+    bool EditEmailEnabled = toolActions.Where(e => e.ActionID == 1161).Single().IsAuthorizedAction;
+    bool EditPasswordEnabled = toolActions.Where(e => e.ActionID == 1162).Single().IsAuthorizedAction;
+    bool EditUserNameEnabled = toolActions.Where(e => e.ActionID == 1163).Single().IsAuthorizedAction;
+
+}
+
+@*@{Html.RenderPartial("~/Views/UserControls/ToolTitleControl.cshtml", mTool);}*@
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/PasswordandUserNameValidation.js"></script>
+
+<script>
+    // Like /Scripts/DateValidationFormat.js but amended since we have both Datetime and Date in the same file
+    $(document).ready(function () {
+
+        kendo.culture("en-GB");
+
+        $.validator.methods['date'] = function (value, element) {
+            var DateAndTimeArray = value.split(" ");
+            var validDate = false;
+            var DateFormat = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+            var dateValue = DateAndTimeArray[0].toString();
+
+            var stamp = value.split(" ");
+            var validTime = /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])(:([0-5]?[0-9]))?$/i.test(DateAndTimeArray[1]);
+            if (DateFormat.test(dateValue)) {
+
+                var adata = value.split('/');
+                var dd = parseInt(adata[0], 10);
+
+                var mm = parseInt(adata[1], 10);
+                var yyyy = parseInt(adata[2], 10);
+                var xdata = new Date(yyyy, (mm - 1), dd);
+
+                if ((xdata.getFullYear() == yyyy) && (xdata.getMonth() == (mm - 1)) &&
+                    (xdata.getDate() == dd)) {
+
+                    validDate = true;
+                }
+                else {
+                    validDate = false;
+                }
+            } else
+                validDate = false;
+            return this.optional(element) || (validDate && (validTime || typeof DateAndTimeArray[1] == 'undefined'));//undefined test is added since we have both date and datetime
+        }
+    });
+
+    function ValidateDate(dtValue) {
+        var dtRegex = new RegExp(/\b\d{1,2}[\/-]\d{1,2}[\/-]\d{4}\b/);
+        return dtRegex.test(dtValue);
+    }
+
+    function OnAwayFromSelect() {
+        if (ValidateDate(this.wrapper.context.value)) {//date is valid
+            {
+                $("#Validator_Required_AwayFrom").html("");
+                $('#Validator_AwayFrom .field-validation-error')
+                .removeClass('field-validation-error')
+                .addClass('field-validation-valid');
+            }
+        }
+    }
+
+    function OnAwayToSelect() {
+        if (ValidateDate(this.wrapper.context.value)) {//date is valid
+            {
+                $("#Validator_Required_AwayTo").html("");
+                $('#Validator_AwayTo .field-validation-error')
+                .removeClass('field-validation-error')
+                .addClass('field-validation-valid');
+            }
+        }
+    }
+
+    function ChangeBreakPanelVisibility() {
+        if ($('input[id="IsInBreak"]').is(':checked'))
+            $("#Panel_Break").attr("style", "visibility:visible");
+        else
+            $("#Panel_Break").attr("style", "visibility:hidden");
+    }
+
+    function OnForwarToSelect() {
+        var ForwardToComboBox = $('#ForwardTo').data("kendoComboBox");
+        var SelectedUser = ForwardToComboBox.dataItem(ForwardToComboBox.select());
+        var IsForwardToValid = SelectedUser.UserID != 0;
+
+        if (!IsForwardToValid)
+            $("#Validator_ForwardTo").html("The field Forward to is required.");
+        else
+            $("#Validator_ForwardTo").html("");
+    }
+</script>
+<style type="text/css">
+    .k-textbox {
+        min-width: 220px;
+        max-width: 350px;
+        width: 100%;
+    }
+
+    .short {
+        color: #ee9f05;
+    }
+
+    .weak {
+        color: #BD5A65;
+    }
+
+    .good {
+        color: #428bca;
+    }
+
+    .strong {
+        color: #3c763d;
+    }
+
+
+    #ChangePasswordWindow {
+        overflow: hidden;
+    }
+
+    #passStrength {
+        width: 248px;
+    }
+
+    .k-textbox:hover {
+        border-color: #c5c5c5 !important;
+    }
+</style>
+
+<script type="text/javascript">
+
+    function RequiredValidator_AwayFrom() {
+        var IsAwayFromValid = false;
+        if ($("#AwayFrom").val() == "")
+            $("#Validator_Required_AwayFrom").html("The field Away From is required.");
+        else {
+            $("#Validator_Required_AwayFrom").html("");
+            IsAwayFromValid = true;
+        }
+        return IsAwayFromValid;
+    }
+
+    function RequiredValidator_AwayTo() {
+        var IsAwayToValid = false;
+        if ($("#AwayTo").val() == "")
+            $("#Validator_Required_AwayTo").html("The field Away To is required.");
+        else {
+            $("#Validator_Required_AwayTo").html("");
+            IsAwayToValid = true;
+        }
+        return IsAwayToValid;
+    }
+
+    function ReverseChangeDateFormat(date) {
+        var parts = date.split('/');
+        var newFormat = parts[1] + "-" + parts[0] + "-" + parts[2];
+        return newFormat;
+    }
+
+    $(function () {
+        $("#UpdateUserForm").submit(function (event) {
+
+            notification = $("#notification").data("kendoNotification");
+            var dataString;
+            event.preventDefault();
+            event.stopImmediatePropagation();//this added to avoid calling submit twice
+
+            dataString = new FormData($("#UpdateUserForm").get(0));
+
+            var EmailValue = $("#Email").val();
+            var IsTakeBreakValid;
+            if ($('input[id="IsInBreak"]').is(':checked')) {
+                var ForwardToComboBox = $('#ForwardTo').data("kendoComboBox");
+                var SelectedUser = ForwardToComboBox.dataItem(ForwardToComboBox.select());
+                var IsForwardToValid = SelectedUser.UserID != 0;
+
+                var IsAwayFromValid = RequiredValidator_AwayFrom();
+                var IsAwayToValid = RequiredValidator_AwayTo();
+
+                if (!IsForwardToValid)
+                    $("#Validator_ForwardTo").html("The field Forward to is required.");
+                else
+                    $("#Validator_ForwardTo").html("");
+                if (IsAwayFromValid && IsAwayToValid && IsForwardToValid) {
+                    var Tmp_dateFrom = ReverseChangeDateFormat($("#AwayFrom").val().split(" ")[0]);
+                    var Tmp_dateTo = ReverseChangeDateFormat($("#AwayTo").val().split(" ")[0]);
+
+                    var DateFromConverted = Tmp_dateFrom + " " + $("#AwayFrom").val().split(" ")[1];
+                    var DateToConverted = Tmp_dateTo + " " + $("#AwayTo").val().split(" ")[1];
+
+                    var DateFrom = new Date(DateFromConverted);
+                    var DateTo = new Date(DateToConverted);
+                    var DateToday = new Date();
+
+                    //Diffrence DateFrom And Today's date
+                    var diffToday = DateFrom - DateToday;
+                    var diffTodayInDays = Math.round(diffToday / 86400000); // days
+                    var diffTodayInHours = Math.round((diffToday % 86400000) / 3600000); // hours
+                    var diffTodayInMinute = Math.round(((diffToday % 86400000) % 3600000) / 60000); // minutes
+
+                    //Diffrence DateTo And DateFrom
+                    var diffDates = DateTo - DateFrom;
+                    var diffDays = Math.round(diffDates / 86400000); // days
+                    var diffHrs = Math.round((diffDates % 86400000) / 3600000); // hours
+                    var diffMins = Math.round(((diffDates % 86400000) % 3600000) / 60000); // minutes
+
+                    if (diffTodayInDays < 0 || (diffTodayInDays == 0 && diffTodayInHours < 0) || (diffTodayInDays == 0 && diffTodayInHours == 0 && diffTodayInMinute <= 0)) {
+                        $("#Validator_BreakPanel").html("Away from date must be greater than today's date");
+                        IsTakeBreakValid = false;
+                    }
+                    else if (diffDays < 0 || (diffDays == 0 && diffHrs < 0) || (diffDays == 0 && diffHrs == 0 && diffMins <= 0)) {
+                        $("#Validator_BreakPanel").html("Away to date must be greater than Away From date");
+                        IsTakeBreakValid = false;
+                    } else {
+                        $("#Validator_BreakPanel").html("");
+                        IsTakeBreakValid = true;
+                    }
+                }
+                else
+                    IsTakeBreakValid = false;
+
+            } else {
+                IsTakeBreakValid = true;
+            }
+
+            if (IsEmailValid_FN() && IsTakeBreakValid) {
+                kendo.ui.progress($("#UpdateUserForm"), true);
+                $.ajax({
+                    type: "POST",
+                    url: "/Account/UpdateUser",
+                    data: dataString,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (data == "ValidationError") {
+
+                        }
+                        else if (data == "Success") {
+                            $("#MyAccountEmailForVerification")[0].value = EmailValue;
+                            notification.show({
+                                message: "Updated"
+                            }, "notification-success");
+                        }
+                        else {
+                            notification.show({
+                                message: "An error has occurred"
+                            }, "error");
+                        }
+                        kendo.ui.progress($("#UpdateUserForm"), false);
+                    },
+                    error: function () {
+                        kendo.ui.progress($("#UpdateUserForm"), false);
+                        alert("something seems wrong");
+                    }
+                });
+            }
+        }); //end .submit()
+    });
+
+
+    $(document).ready(function () {
+        $('#NewUserName').on('input paste', function () {
+            var UserName = $("#NewUserName").val();
+            if (UserName != "") {
+                if (UserName != '@Model.Username') {
+                    UserNameValidation();
+                }
+                else {
+                    $('#NewUserName').attr("style", "border-color: #b94a48;");
+                    $("#UserNameValidation").html("Please make sure to change your username.");
+                }
+
+            }
+            else {
+                $('#NewUserName').attr("style", "border-color: #b94a48;");
+                $("#UserNameValidation").html("Username field is required.");
+            }
+        });
+    });
+
+    // Required And Unique
+
+    function validateEmail(email) {
+        //var re = /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i;
+        var re = /^([\w-]+(?:\.[\w-]+)*)@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        return re.test(email);
+    }
+
+    $().ready(function () {
+
+        FinalUserName = '@Model.Username';
+
+        //UserName validation on input or paste
+        $('#NewUserName').on('input paste', function () {
+            var UserName = $("#NewUserName").val();
+            console.log(UserName);
+            if (UserName.length > 0 && UserName != FinalUserName) {
+                UserNameValidation();//function in JS
+            } else if (UserName == FinalUserName) {
+                $('#NewUserName').attr("style", "border-color: #b94a48;");
+                $("#UserNameValidation").html("Please make sure to change your username.");
+            }
+            else {
+                $('#NewUserName').attr("style", "border-color: #b94a48;");
+                $("#UserNameValidation").html("Username field is required.");
+            }
+        });
+
+        $("#Email").on('input paste', function () {
+            IsEmailValid_FN();
+        });
+
+        //For Clearing Required Validator And Let mvc Manage Dates Validations and showing is required when we empty date field
+        $("#AwayFrom").on('input paste', function () {
+            RequiredValidator_AwayFrom();
+        });
+
+        $("#AwayTo").on('input paste', function () {
+            RequiredValidator_AwayTo();
+        });
+    })
+
+    function IsEmailValid_FN() {
+        var EmailIsValid = false;
+        var EmailValue = $("#Email").val();
+
+        var UserCanUpdateEmail = '@Model.CanUpdateEmail';
+
+        if (UserCanUpdateEmail.toLowerCase() == "false") {
+            $("#Email_Validator").html("");
+            $("#Email").css("border-color", "#bcb4b0");
+            EmailIsValid = true;
+        }
+        else if (EmailValue == "") {//empty
+            $("#Email_Validator").html("The Email field is required.");
+            $("#Email").css("border-color", "#b94a48");
+            $("#Email").focus();
+        }
+        else if (validateEmail(EmailValue)) {
+
+            $.ajax({
+                url: '/Account/IsEmailUnique',
+                type: 'POST',
+                async: false,
+                data: { 'Email': EmailValue },
+                success: function (data) {
+                    if ($("#MyAccountEmailForVerification")[0].value == EmailValue || data == "True") {
+                        $("#Email_Validator").html("");
+                        $("#Email").css("border-color", "#bcb4b0");
+                        EmailIsValid = true;
+                    }
+                    else if (data == "False") {
+                        $("#Email_Validator").html("Email already exists.");
+                        $("#Email").css("border-color", "#b94a48");
+                        $("#Email").focus();
+                    }
+                },
+                error: function () {
+                    alert("something seems wrong");
+                }
+            });
+        }
+        else {
+            $("#Email_Validator").html("Invalid Email.");
+            $("#Email").css("border-color", "#b94a48");
+            $("#Email").focus();
+        }
+        return EmailIsValid;
+    }
+
+    function SetUserIDNotInListParam() {
+        var UserID = $("#UserID")[0].value;
+        return {
+            UserID: UserID
+        }
+    }
+
+    function OnBirthDateSelect() {
+        if (ValidateDate(this.wrapper.context.value)) //date is valid
+            $('#BirthDateValidator .field-validation-error').removeClass('field-validation-error').addClass('field-validation-valid');
+    }
+
+</script>
+
+@*Used: so IsUniqueMail won't return duplicated Email if it is the same user Email address*@
+<input type="hidden" value="@Model.Email" id="MyAccountEmailForVerification" />
+
+@Html.Action("ChangeUserName", "UserControls", new { user = Model })
+@(Html.Kendo().Window().Name("ChangePasswordWindow").Width(560).Height(340).Draggable()
+                                                .Title("Change Password")
+                                                .Visible(false)
+                                                .Modal(true))
+
+@using (Ajax.BeginForm("UpdateUser", "Account", new AjaxOptions { UpdateTargetId = "UploadStatusForAdd" }, new { id = "UpdateUserForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(m => m.CanCloseFeedback)}
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            @Html.LabelFor(model => model._Title)
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="row">
+                                @Html.EditorFor(model => model._Title)
+                            </div>
+                            <div class="row">
+                                @Html.ValidationMessageFor(model => model._Title)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            @Html.LabelFor(model => model.FirstName)
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="row">
+                                @Html.EditorFor(model => model.FirstName)
+                            </div>
+                            <div class="row">
+                                @Html.ValidationMessageFor(model => model.FirstName)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            @Html.LabelFor(model => model.LastName)
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="row">
+                                @Html.EditorFor(model => model.LastName)
+                            </div>
+                            <div class="row">
+                                @Html.ValidationMessageFor(model => model.LastName)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <table>
+                                <tr>
+                                    <td>@Html.LabelFor(model => model.UserFullName)</td>
+                                    <td><span class="Required">*</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="row">
+                                @Html.EditorFor(model => model.UserFullName)
+                            </div>
+                            <div class="row">
+                                @Html.ValidationMessageFor(model => model.UserFullName)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <table>
+                                <tr>
+                                    <td>@Html.LabelFor(model => model.Email)</td>
+                                    <td><span class="Required">*</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="row">
+                                @if (Model.CanUpdateEmail && EditEmailEnabled)
+                                {
+                                    @Html.EditorFor(model => model.Email)
+                                }
+                                else
+                                {
+                                    @Model.Email
+                                    @Html.HiddenFor(model => model.Email)
+                                }
+                            </div>
+                            <div class="row">
+                                <div id="Email_Validator" style="color:#b94a48;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            @Html.LabelFor(model => model.MobilPhone)
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="row">
+                                @Html.EditorFor(model => model.MobilPhone)
+                            </div>
+                            <div class="row">
+                                @Html.ValidationMessageFor(model => model.MobilPhone)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if (EditUserNameEnabled)
+                {
+                    <script>
+                        function UpdateUserName() {
+                            notification = $("#notification").data("kendoNotification");
+                            var UserName = $("#NewUserName").val();
+                            if (UserName != "") {
+                                if (UserName != FinalUserName) { //FinalUserName is set on document.ready or on Username update
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/Account/doesUserNameExist",
+                                        data: { 'UserName': UserName },
+                                        success: function (data) {
+                                            if (data == false) {
+                                                $("#UserNameValidation").html("User name already exists. Please enter a different user name.");
+                                                $('#NewUserName').attr("style", "border-color: #b94a48;");
+                                            }
+                                            else {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/Account/UpdateUserName",
+                                                    data: { 'UserID': '@Model.UserID', 'UserName': UserName },
+                                                    success: function (data) {
+                                                        $("#ChangeUserNameWindow").data("kendoWindow").close();
+                                                        if (data == "Success") {
+
+                                                            $("#ConnectedAs").html(UserName);
+                                                            $("#UserNameStaticField").val(UserName);
+                                                            FinalUserName = UserName;
+                                                            notification.show({
+                                                                message: "Updated"
+                                                            }, "notification-success");
+                                                        }
+                                                        else {
+                                                            notification.show({
+                                                                message: "Error"
+                                                            }, "error");
+
+                                                        }
+                                                    },
+                                                    error: function () {
+                                                        alert("something seems wrong");
+                                                    }
+                                                });
+                                            }
+
+                                        },
+                                        error: function () {
+                                            alert("something seems wrong");
+                                        }
+                                    });
+                                } else {
+                                    $('#NewUserName').attr("style", "border-color: #b94a48;");
+                                    $("#UserNameValidation").html("Please make sure to change your username.");
+                                }
+                            }
+                            else {
+                                $('#NewUserName').attr("style", "border-color: #b94a48;");
+                                $("#UserNameValidation").html("Username field is required.");
+                            }
+                        }
+                    </script>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            @Html.LabelFor(model => model.Username)
+                                        </td>
+                                        <td>
+                                            <span class="Required">*</span>
+                                        </td>
+                                        <td style="width:110px" align="center">
+                                            <input type="button" class="EditButton" title='Change Username' onclick="OpenChangeUserNameWindow()" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-10" style="padding-left:0px;">
+                                <input type="text" value="@Model.Username" readonly="readonly" id="UserNameStaticField" class="k-textbox" />
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (EditPasswordEnabled)
+                {
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            @Html.LabelFor(model => model.Password)
+                                        </td>
+                                        <td><span class="Required">*</span></td>
+                                        <td style="width:110px" align="center">
+
+
+                                            <script>
+                                                //Scripts for Password and it's window are in PasswordandUserNameValidation.js
+                                                function OpenChangePasswordWindow() {
+
+                                                    var ChangePasswordWindow = $("#ChangePasswordWindow").data("kendoWindow");
+                                                    ChangePasswordWindow.content("<div class='k-loading-mask' style='width: 100%; height: 100%; top: 0px; left: 0px;'><span class='k-loading-text'>Loading...</span><div class='k-loading-image'></div><div class='k-loading-color'></div></div>");
+                                                    ChangePasswordWindow.refresh({
+                                                        url: "../Profiles/ChangePassword"
+                                                    });
+                                                    ChangePasswordWindow.center().open();
+                                                }
+                                            </script>
+                                            <input type="button" class="EditButton" title='Change Password' onclick="OpenChangePasswordWindow()" />
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            @Html.LabelFor(model => model.BirthDate)
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="row">
+                                @(Html.Kendo().DatePicker()
+                                    .Name("BirthDate")
+                                    .Value(Model.BirthDate)
+                                    .Format("dd/MM/yyyy")
+                                    .ParseFormats(new string[] { "dd/MM/yyyy" })
+            .HtmlAttributes(new { style = "width:220px", type = "text" })
+                                    .Events(e =>
+                                    {
+                                        e.Change("OnBirthDateSelect");
+                                    })
+                                )
+                            </div>
+                            <div class="row" id="BirthDateValidator">
+                                @Html.ValidationMessageFor(model => model.BirthDate)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            @Html.LabelFor(model => model.Gender)
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="row">
+                                @(Html.Kendo().DropDownList()
+                                  .Name("Gender")
+                                  .HtmlAttributes(new { style = "width:220px" })
+                                  .DataTextField("Text")
+                                  .DataValueField("Value")
+                                  .BindTo(new List<SelectListItem>() {
+                                      new SelectListItem() {
+                                          Text = "Please select",
+                                          Value = "0"
+                                      },
+                                      new SelectListItem() {
+                                          Text = "Male",
+                                          Value = "1"
+                                      },
+                                      new SelectListItem() {
+                                          Text = "Female",
+                                          Value = "2"
+                                      }
+                                  })
+                                  .Value(@Model.Gender)
+                                )
+                            </div>
+                            <div class="row">
+                                @Html.ValidationMessageFor(model => model.Gender)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            @Html.LabelFor(model => model.PreferedLanguageID)
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="row">
+                       
+                            </div>
+                            <div class="row">
+                                @Html.ValidationMessageFor(model => model.PreferedLanguageID)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <label>Feedback Issues escalated to:</label>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="row">
+                     
+                            </div>
+                            <div class="row">
+                                @Html.ValidationMessageFor(model => model.PreferedLanguageID)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                            <input type="checkbox" id="IsInBreak" name="IsInBreak" class="k-checkbox" onchange="ChangeBreakPanelVisibility()" @{ if (@Model.ForwardTo != null) { @Html.Raw("checked='checked'")                                                   ; }}>
+                            <label class="k-checkbox-label" for="IsInBreak">I am taking a break with a very limited access to emails</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="Panel_Break" @{ if (@Model.ForwardTo == null) { @Html.Raw("style='visibility:hidden;'")                                          ; }}>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                <table>
+                                    <tr>
+                                        <td>
+                                            @Html.Label("I will be away from")
+                                        </td>
+                                        <td>
+                                            <span class="Required">*</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <div class="row">
+                                    @(Html.Kendo().DateTimePicker()
+                                    .Name("AwayFrom")
+                                    .Value(Model.AwayFrom)
+                                    .Format("dd/MM/yyyy HH:mm")
+                                    .ParseFormats(new string[] { "MM/dd/yyyy HH:mm" })
+                                    .HtmlAttributes(new { style = "width:220px", type = "text" })
+                                    .Events(e =>
+                                    {
+                                        e.Change("OnAwayFromSelect");
+                                    })
+                                    )
+                                </div>
+                                <div class="row" id="Validator_AwayFrom">
+                                    @Html.ValidationMessageFor(model => model.AwayFrom)
+                                </div>
+                                <div class="row" id="Validator_Required_AwayFrom" style="color: #b94a48;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                <table>
+                                    <tr>
+                                        <td>
+                                            @Html.Label("And I will be back on")
+                                        </td>
+                                        <td>
+                                            <span class="Required">*</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <div class="row">
+                                    @(Html.Kendo().DateTimePicker()
+                                    .Name("AwayTo")
+                                    .Value(Model.AwayTo)
+                                    .Format("dd/MM/yyyy HH:mm")
+                                .ParseFormats(new string[] { "MM/dd/yyyy HH:mm" })
+                                    .HtmlAttributes(new { style = "width:220px", type = "text" })
+                                    .Events(e =>
+                                    {
+                                        e.Change("OnAwayToSelect");
+                                    })
+                                    )
+                                </div>
+                                <div class="row" id="Validator_AwayTo">
+                                    @Html.ValidationMessageFor(model => model.AwayTo)
+                                </div>
+                                <div class="row" id="Validator_Required_AwayTo" style="color: #b94a48;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            @Html.LabelFor(model => model.ForwardTo)
+                                        </td>
+                                        <td>
+                                            <span class="Required">*</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <div class="row">
+
+                                    @(Html.Kendo().ComboBox()
+                                            .Name("ForwardTo")
+                                            .HtmlAttributes(new { style = "width:220px" })
+                                            .DataTextField("UserFullName")
+                                            .DataValueField("UserID")
+                                            .Filter(FilterType.Contains)
+                                            .Events(e =>
+                                            {
+                                                e.Change("OnForwarToSelect");
+                                            })
+                                            .DataSource(source => source
+                                                .Read(read =>
+                                                {
+                                                    read.Action("GetUsersForForward", "Account").Data("SetUserIDNotInListParam");
+                                                })
+                                            )
+                                            .Template("<table><tr title=\"UserID: #:data.UserID# | UserName: #:data.UserName#\"><td style=\"width:40px;\" align=\"center\"><span class=\"k-state-default\"> #if(data.UserIsGroup==false) {#<img src=\"../Content/images/Functions/contacts_view.png\" alt=\"#:data.UserID#\" width=\"30px\"/> #}#"
+                                                + "#if(data.UserIsGroup==true)  {#<img src=\"../Content/images/ActiveTools/Users.png\" alt=\"#:data.UserID#\"  width=\"35px\"/> #}# </td>"
+                                                + "<td><h6>#: data.UserFullName #</h6></span></td></tr></table>")
+                                            .Value(@Model.ForwardTo != null ? @Model.ForwardTo.ToString() : "0")
+                                    )
+                                </div>
+                                <div class="row" id="Validator_ForwardTo" style="color: #b94a48;">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <h5>Please note, colleagues who will receive your notifications may need the same access rights as yourself</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                                <div id="Validator_BreakPanel" style="color: #b94a48;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="row">
+
+                   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
+                    <input type="submit" style="margin: 3px;width:150px" class="DefaultButtonStyle" value='Update' />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 hidden">
+                @Html.EditorFor(model => model.UserID)
+            </div>
+        </div>
+    </div>
+}
+
+@*<div class="col-md-6">
+        <p style="color:black !important">
+            <h4>
+                You have logged in <span></span>
+                times in the last 12 months
+            </h4>
+            <br />
+            <h4>
+                <b>You are in the following user groups:</b>
+            </h4>
+        </p>
+    </div>*@
+<div id="UploadStatusForAdd"></div>

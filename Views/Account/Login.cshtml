@@ -1,0 +1,253 @@
+﻿@model Atrremo.Models.LoginModel
+
+@{
+    Layout = null;
+    bool IsArrowSpecific = ((System.Configuration.ConfigurationManager.AppSettings["ArrowSpecific"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["ArrowSpecific"].ToString().ToLower() == "yes") : false);
+    string InstanceHomeLogoPath = ((System.Configuration.ConfigurationManager.AppSettings["InstanceHomeLogoPath"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceHomeLogoPath"].ToString() : "");
+    string InstanceHomeLogoLink = ((System.Configuration.ConfigurationManager.AppSettings["InstanceHomeLogoLink"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceHomeLogoLink"].ToString() : "");
+    string InstanceHomeBannerPath = ((System.Configuration.ConfigurationManager.AppSettings["InstanceHomeBannerPath"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceHomeBannerPath"].ToString() : "");
+    bool IsToshibaSpecific = ((System.Configuration.ConfigurationManager.AppSettings["ToshibaSpecific"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["ToshibaSpecific"].ToString().ToLower() == "yes") : false);
+    bool InstanceHomeBannerAsDivBackgroundImage = ((System.Configuration.ConfigurationManager.AppSettings["InstanceHomeBannerAsDivBackgroundImage"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["InstanceHomeBannerAsDivBackgroundImage"].ToString().ToLower() == "yes") : false);
+    string InstanceName = (System.Configuration.ConfigurationManager.AppSettings["IntanceName"] != null) ? System.Configuration.ConfigurationManager.AppSettings["IntanceName"].ToString() : "Atreemo";
+    string InstanceFavicon = (System.Configuration.ConfigurationManager.AppSettings["IntanceFavicon"] != null) ? System.Configuration.ConfigurationManager.AppSettings["IntanceFavicon"].ToString() : "favicon.png";
+    string InstanceLogo = (System.Configuration.ConfigurationManager.AppSettings["InstanceLogo"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceLogo"].ToString() : "../Content/images/Logo/AtreemoLogo.png";
+    string ADFS = (System.Configuration.ConfigurationManager.AppSettings["ida:ADFSCaption"]);
+    string LDAP = (System.Configuration.ConfigurationManager.AppSettings["LDAPCaption"]);
+    string CustmerCode = (System.Configuration.ConfigurationManager.AppSettings["CustomerCode"]);
+}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>@(string.IsNullOrEmpty(@ViewBag.Title) ? "" : @ViewBag.Title + " - ") @InstanceName</title>
+    <link rel="apple-touch-icon" href="/@InstanceFavicon" />
+    <link href="../Content/LoginStyle/darktheme/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/LoginStyle/darktheme/css/main.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../Content/LoginStyle/Moneyween/font/css/font-awesome.min.css" rel="stylesheet">
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+        function PasswordRecoveryBox() {
+            $("#LoginBox").attr("style", "display:none");
+            $("#PasswordRecoveryBox").attr("style", "display:inline");
+        }
+
+        function validateEmail(email) {
+            var re = /^([\w-]+(?:\.[\w-]+)*)@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            return re.test(email);
+        }
+
+
+        function SendEmailForPasswordRecovery() {
+
+            if (validateEmail($("#EmailForPasswordRecovery").val())) {
+                $("#EmailValidationMessage").html("");
+                $.ajax({
+                    url: '/Account/SendEmailForPasswordRecovery',
+                    type: 'POST',
+                    data: { 'Email': $("#EmailForPasswordRecovery").val() },
+                    success: function (data) {
+                        if (data == 'EmailNotInDB')
+                            $("#EmailValidationMessage").html("Email does not exist.").css('color', 'red');
+                        else if (data == 'Error')
+                            $("#EmailValidationMessage").html("An error has occured.").css('color', 'red');
+                        else if (data == 'Error')
+                            $("#EmailValidationMessage").html("An error has occured.").css('color', 'red');
+                        else if (data == 'Success') {
+                            $("#EmailValidationMessage").html("Password recovery mail has been sent. You will be automatically redirected to login page.").css('color', 'green');
+                            setTimeout(
+                                  function () {
+                                      $("#PasswordRecoveryBox").attr("style", "display:none");
+                                      $("#LoginBox").attr("style", "display:inline");
+                                  }, 6000);
+
+                        }
+                        else {
+                            $("#EmailValidationMessage").html(data).css('color', 'red');
+                        }
+                    },
+                    error: function () {
+                        alert("something seems wrong");
+                    }
+                });
+            }
+            else {
+                $("#EmailValidationMessage").html("Invalid Email.").css('color', 'red');
+            }
+        }
+    </script>
+
+    <style type="text/css">
+        /* Set password Icon Width*/
+        .fa-lock {
+            width: 11px !important;
+        }
+
+        .input-group-addon {
+            background-color: white !important;
+        }
+
+
+        body {
+            line-height: 42px;
+            font-family: 'Source Sans Pro', sans-serif;
+            margin: 0;
+            background-color: #FFFFFF;
+        }
+
+        .Top-LinkBox {
+            padding: 15px !important;
+        }
+
+        .Top-Link {
+            font-size: 1.2em;
+            color: gray !important;
+        }
+
+        .MainBox {
+            height: 614px;
+            margin: 0;
+        }
+
+            .MainBox > img {
+                width: 100%;
+                /*min-width: 700px;*/
+            }
+
+        .TitleLoginBox {
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .Title {
+            font-size: 3.5em;
+            color: white;
+            font-weight: bold;
+            margin-top: 24px;
+            margin-left: 20px;
+        }
+
+        .AuthentificationBox {
+            max-width: 562px;
+            min-height: 308px;
+            background-color: red;
+            border: 1px solid #ddd;
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 25px;
+            /*margin-left: 120px;*/
+        }
+
+
+        .Footer {
+            color: #6D6D6D;
+            padding: 10px 0;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+
+        table {
+            line-height: 15px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body style="margin:0;overflow-x:hidden">
+    <div class="row" style="background-color: #FFFFFF; border-bottom: 1px solid #6D6D6D; ">
+        <div class="col-md-6 col-sm-6 col-xs-6 text-left">
+            <a href="#">
+                <img src="@InstanceLogo" border="0" alt="Home" style="margin: 15px; height: 50px" />
+            </a>
+        </div>
+        @if (!string.IsNullOrEmpty(InstanceHomeLogoPath))
+        {
+            <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                <div class="Top-LinkBox">
+                    <a href='@InstanceHomeLogoLink'>
+                        <img src='@InstanceHomeLogoPath' style="max-height: 50px;max-width:150px" />
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="MainBox" style="position: relative; background-color: #FFFFFF; margin: 0; ">
+        @if (!string.IsNullOrEmpty(InstanceHomeBannerPath))
+        {
+
+            if (InstanceHomeBannerAsDivBackgroundImage)
+            {
+                <div style="height: 650px; width: 100%;  background-size: cover;background-repeat:repeat-x;background-position:right top;margin:0;padding:0; background-image: url('@InstanceHomeBannerPath');"></div>
+            }
+            else
+            {
+                <img src='@InstanceHomeBannerPath' height="614" alt="banner">
+            }
+        }
+        <div class="TitleLoginBox">
+            <div style="height: 180px;">
+                <div class="AuthentificationBox" style="margin: 0 auto; position: relative; top: 90%;">
+                    @if (ADFS != null)
+                    {
+                        <div id="ADFS Login" class="ADFS_Login">
+                            <section id="socialLoginForm">
+                                @Html.Partial("_ExternalLoginsListPartial", new Atreemo.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                            </section>
+                        </div>
+                        <div>
+                            OR
+                        </div>
+                    }
+
+                    @if (LDAP != null)
+                    {
+                        <div id="ADFS Login" class="ADFS_Login">
+                            <section id="socialLoginForm">
+                                <div id="socialLoginList">
+                                    <p>
+                                        <button type="submit" onclick="window.location = 'ExternalLogin?ReturnUrl=@ViewBag.ReturnUrl'" class="btn btn-custom-primary btn-lg btn-block btn-login" id="Ldap" name="provider" title="Log in using your account">@LDAP</button>
+                                    </p>
+                                </div>
+                            </section>
+                        </div>
+                        <div>
+                            OR
+                        </div>
+                    }
+                    <div id="LoginBox">
+                        @using (Html.BeginForm("Facebook", "Home"))
+                        {
+                            @Html.AntiForgeryToken()
+                            <p style="color: #555;font-size:1.6em;line-height:23px;margin-top: 60px;">Login with your facebook account:</p>
+
+                            if (CustmerCode == "AtreemoLite")
+                            {
+                                <div style="text-align: left; line-height: 18px !important">By using your username and password to log into Atreemo Lite, you agree to abide by the Terms of Use that you can access and read <b><a href="/Account/Terms" target="_blank">here</a></b></div>
+                            }
+
+                            <input class="btn btn-custom-primary btn-lg btn-block btn-login" style="margin-top:75px;" type="submit" id="LoginBtn" value="Login" />
+
+                        }
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row" style="background-color: #FFFFFF">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="Footer text-center">
+                <span>@InstanceName</span>  &copy; @DateTime.Now.Year
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

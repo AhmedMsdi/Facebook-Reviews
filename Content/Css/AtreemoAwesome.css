@@ -1,0 +1,16 @@
+﻿.add_section,.preview_email,.send_test{
+   background-color:transparent !important;
+   border: none !important;
+}
+.add_section i, .preview_email i,.send_test i {
+   font-size:25px;
+   cursor:pointer;
+}
+i#CheckTemplate,i#unCheckTemplate {
+    color: #363940;
+    font-size: 30px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+
+}

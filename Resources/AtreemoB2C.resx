@@ -1,0 +1,669 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Automation_FullTitle" xml:space="preserve">
+    <value>Automation</value>
+  </data>
+  <data name="Automation_Title" xml:space="preserve">
+    <value>Automation</value>
+  </data>
+  <data name="Automation_Tooltip" xml:space="preserve">
+    <value>Automation</value>
+  </data>
+  <data name="Campaigns_FullTitle" xml:space="preserve">
+    <value>Campaigns</value>
+  </data>
+  <data name="Campaigns_Title" xml:space="preserve">
+    <value>Campaigns</value>
+  </data>
+  <data name="Campaigns_Tooltip" xml:space="preserve">
+    <value>Campaigns</value>
+  </data>
+  <data name="Companies" xml:space="preserve">
+    <value>Households</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Household</value>
+  </data>
+  <data name="ConncetedAs" xml:space="preserve">
+    <value>You are connected as</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="Dashboard_FullTitle" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Dashboard_Title" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Dashboard_Tooltip" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Events_FullTitle" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Events_Title" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Events_Tooltip" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Feedback_FullTitle" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="Feedback_Title" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="Feedback_Tooltip" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="Household" xml:space="preserve">
+    <value>Household</value>
+  </data>
+  <data name="Households" xml:space="preserve">
+    <value>Households</value>
+  </data>
+  <data name="Insight_FullTitle" xml:space="preserve">
+    <value>Insight</value>
+  </data>
+  <data name="Insight_Title" xml:space="preserve">
+    <value>Insight</value>
+  </data>
+  <data name="Insight_Tooltip" xml:space="preserve">
+    <value>Insight</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="Mapping_FullTitle" xml:space="preserve">
+    <value>Mapping</value>
+  </data>
+  <data name="Mapping_Title" xml:space="preserve">
+    <value>Mapping</value>
+  </data>
+  <data name="Mapping_Tooltip" xml:space="preserve">
+    <value>Mapping</value>
+  </data>
+  <data name="Salutation1" xml:space="preserve">
+    <value>Hello</value>
+  </data>
+  <data name="Salutation2" xml:space="preserve">
+    <value>Welcome Back</value>
+  </data>
+  <data name="Salutation3" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="SCV_FullTitle" xml:space="preserve">
+    <value>Single Customer View</value>
+  </data>
+  <data name="SCV_Title" xml:space="preserve">
+    <value>SCV</value>
+  </data>
+  <data name="SCV_Tooltip" xml:space="preserve">
+    <value>Single Customer View</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Surveys_FullTitle" xml:space="preserve">
+    <value>Surveys</value>
+  </data>
+  <data name="Surveys_Title" xml:space="preserve">
+    <value>Surveys</value>
+  </data>
+  <data name="Surveys_Tooltip" xml:space="preserve">
+    <value>Surveys</value>
+  </data>
+  <data name="Talk_FullTitle" xml:space="preserve">
+    <value>Talk</value>
+  </data>
+  <data name="Talk_Title" xml:space="preserve">
+    <value>Talk</value>
+  </data>
+  <data name="Talk_Tooltip" xml:space="preserve">
+    <value>Talk</value>
+  </data>
+  <data name="ToolsHeader1" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="ToolsHeader2" xml:space="preserve">
+    <value>Recent Actions</value>
+  </data>
+  <data name="ToolsHeader3" xml:space="preserve">
+    <value>Your Saved Work</value>
+  </data>
+  <data name="ToolsHeader4" xml:space="preserve">
+    <value>Insight</value>
+  </data>
+  <data name="Vouchers_FullTitle" xml:space="preserve">
+    <value>Vouchers</value>
+  </data>
+  <data name="Vouchers_Title" xml:space="preserve">
+    <value>Vouchers</value>
+  </data>
+  <data name="Vouchers_Tooltip" xml:space="preserve">
+    <value>Vouchers</value>
+  </data>
+  <data name="WelcomeMessage1" xml:space="preserve">
+    <value>what do you want to do today….</value>
+  </data>
+  <data name="WelcomeMessage2" xml:space="preserve">
+    <value>we have not seen you for a while….</value>
+  </data>
+  <data name="WelcomeMessage3" xml:space="preserve">
+    <value>is this your first time here?</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Company_FullTitle" xml:space="preserve">
+    <value>Household Segmentation</value>
+  </data>
+  <data name="Company_Title" xml:space="preserve">
+    <value>Household Segmentation</value>
+  </data>
+  <data name="Contact_FullTitle" xml:space="preserve">
+    <value>Contact Segmentation</value>
+  </data>
+  <data name="Contact_Title" xml:space="preserve">
+    <value>Contact Segmentation</value>
+  </data>
+  <data name="SearchCompany_FullTitle" xml:space="preserve">
+    <value>Search Household</value>
+  </data>
+  <data name="SearchCompany_Title" xml:space="preserve">
+    <value>Search Household</value>
+  </data>
+  <data name="SearchContact_FullTitle" xml:space="preserve">
+    <value>Search Contact</value>
+  </data>
+  <data name="SearchContact_Title" xml:space="preserve">
+    <value>Search Contact</value>
+  </data>
+  <data name="SwitchUser" xml:space="preserve">
+    <value>Switch user</value>
+  </data>
+  <data name="Account_FullTitle" xml:space="preserve">
+    <value>Your Account</value>
+  </data>
+  <data name="Account_Title" xml:space="preserve">
+    <value>Your Account</value>
+  </data>
+  <data name="Account_Tooltip" xml:space="preserve">
+    <value>Manage your account</value>
+  </data>
+  <data name="Help_FullTitle" xml:space="preserve">
+    <value>API</value>
+  </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>API</value>
+  </data>
+  <data name="Help_Tooltip" xml:space="preserve">
+    <value>API</value>
+  </data>
+  <data name="Support_FullTitle" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Support_Title" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Support_Tooltip" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="UserManagement_FullTitle" xml:space="preserve">
+    <value>User Management</value>
+  </data>
+  <data name="UserManagement_Title" xml:space="preserve">
+    <value>User Management</value>
+  </data>
+  <data name="UserManagement_Tooltip" xml:space="preserve">
+    <value>Manage all users</value>
+  </data>
+  <data name="Op0" xml:space="preserve">
+    <value>Inter</value>
+  </data>
+  <data name="Op1" xml:space="preserve">
+    <value>Union</value>
+  </data>
+  <data name="Op2" xml:space="preserve">
+    <value>A minus B</value>
+  </data>
+  <data name="Op3" xml:space="preserve">
+    <value>A comp B</value>
+  </data>
+  <data name="OpDefault" xml:space="preserve">
+    <value>Empty selection</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="CampaignResults_FullTitle" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="CampaignResults_Title" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="CampaignSummary_FullTitle" xml:space="preserve">
+    <value>Campaign Summary</value>
+  </data>
+  <data name="CampaignSummary_Title" xml:space="preserve">
+    <value>Campaign Summary</value>
+  </data>
+  <data name="DynamicContent_FullTitle" xml:space="preserve">
+    <value>Dynamic Content</value>
+  </data>
+  <data name="DynamicContent_Title" xml:space="preserve">
+    <value>Dynamic Content</value>
+  </data>
+  <data name="NewCampaign_FullTitle" xml:space="preserve">
+    <value>Campaign Builder</value>
+  </data>
+  <data name="NewCampaign_Title" xml:space="preserve">
+    <value>Campaign Builder</value>
+  </data>
+  <data name="OpenCampaign_FullTitle" xml:space="preserve">
+    <value>Open a saved campaign</value>
+  </data>
+  <data name="OpenCampaign_Title" xml:space="preserve">
+    <value>Open a saved campaign</value>
+  </data>
+  <data name="ProfileCompany" xml:space="preserve">
+    <value>Household Profile</value>
+  </data>
+  <data name="ProfileContact" xml:space="preserve">
+    <value>Contact Profile</value>
+  </data>
+  <data name="Settings_Title" xml:space="preserve">
+    <value>General Settings</value>
+  </data>
+  <data name="Settings_FullTitle" xml:space="preserve">
+    <value>General Settings</value>
+  </data>
+  <data name="Settings_Tooltip" xml:space="preserve">
+    <value>Using the general settings you can configure Atreemo</value>
+  </data>
+  <data name="GroupsManagement_FullTitle" xml:space="preserve">
+    <value>Group Management</value>
+  </data>
+  <data name="GroupsManagement_Title" xml:space="preserve">
+    <value>Group Management</value>
+  </data>
+  <data name="GroupsManagement_Tooltip" xml:space="preserve">
+    <value>Manage user groups</value>
+  </data>
+  <data name="IconsManagement_FullTitle" xml:space="preserve">
+    <value>Tag Editor</value>
+  </data>
+  <data name="IconsManagement_Tooltip" xml:space="preserve">
+    <value>Tag Editor</value>
+  </data>
+  <data name="IconsManagement_Title" xml:space="preserve">
+    <value>Tag Editor</value>
+  </data>
+  <data name="Works_FullTitle" xml:space="preserve">
+    <value>Saved Projects</value>
+  </data>
+  <data name="Works_Title" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="Works_Tooltip" xml:space="preserve">
+    <value>Browse your saved projects</value>
+  </data>
+  <data name="ModuleManagement_FullTitle" xml:space="preserve">
+    <value>Module Management</value>
+  </data>
+  <data name="ModuleManagement_Title" xml:space="preserve">
+    <value>Module Management</value>
+  </data>
+  <data name="ModuleManagement_Tooltip" xml:space="preserve">
+    <value>Manage all modules</value>
+  </data>
+  <data name="EnvironmentsManagement_FullTitle" xml:space="preserve">
+    <value>Environment Management</value>
+  </data>
+  <data name="EnvironmentsManagement_Title" xml:space="preserve">
+    <value>Environment Management</value>
+  </data>
+  <data name="EnvironmentsManagement_Tooltip" xml:space="preserve">
+    <value>Environment Management</value>
+  </data>
+  <data name="Import_FullTitle" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Import_Title" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Import_Tooltip" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="EditSurvey_FullTitle" xml:space="preserve">
+    <value>Survey Builder</value>
+  </data>
+  <data name="EditSurvey_Title" xml:space="preserve">
+    <value>Survey Builder</value>
+  </data>
+  <data name="EditSurvey_Tooltip" xml:space="preserve">
+    <value>Survey Builder</value>
+  </data>
+  <data name="ExistingSurvey_FullTitle" xml:space="preserve">
+    <value>Existing Surveys</value>
+  </data>
+  <data name="ExistingSurvey_Title" xml:space="preserve">
+    <value>Existing Surveys</value>
+  </data>
+  <data name="ExistingSurvey_Tooltip" xml:space="preserve">
+    <value>Existing Surveys</value>
+  </data>
+  <data name="HeaderAndFooter_FullTitle" xml:space="preserve">
+    <value>Header And Footer</value>
+  </data>
+  <data name="HeaderAndFooter_Title" xml:space="preserve">
+    <value>Header And Footer</value>
+  </data>
+  <data name="HeaderAndFooter_Tooltip" xml:space="preserve">
+    <value>Header And Footer</value>
+  </data>
+  <data name="NewSurvey_FullTitle" xml:space="preserve">
+    <value>Survey Builder</value>
+  </data>
+  <data name="NewSurvey_Title" xml:space="preserve">
+    <value>Survey Builder</value>
+  </data>
+  <data name="NewSurvey_Tooltip" xml:space="preserve">
+    <value>Survey Builder</value>
+  </data>
+  <data name="SocialActivity_FullTitle" xml:space="preserve">
+    <value>Social Media Monitoring</value>
+  </data>
+  <data name="SocialActivity_Title" xml:space="preserve">
+    <value>Social Media Monitoring</value>
+  </data>
+  <data name="SocialActivity_Tooltip" xml:space="preserve">
+    <value>Social Media Monitoring</value>
+  </data>
+  <data name="KeywordsManagement_FullTitle" xml:space="preserve">
+    <value>Keyword Management</value>
+  </data>
+  <data name="KeywordsManagement_Title" xml:space="preserve">
+    <value>Keyword Management</value>
+  </data>
+  <data name="KeywordsManagement_Tooltip" xml:space="preserve">
+    <value>Keyword Management</value>
+  </data>
+  <data name="ActiveUserManagement_FullTitle" xml:space="preserve">
+    <value>Active Users Management</value>
+  </data>
+  <data name="ActiveUserManagement_Title" xml:space="preserve">
+    <value>Active Users Management</value>
+  </data>
+  <data name="ActiveUserManagement_Tooltip" xml:space="preserve">
+    <value>Active Users Management</value>
+  </data>
+  <data name="SentimentOverTime_FullTitle" xml:space="preserve">
+    <value>Sentiment Over Time</value>
+  </data>
+  <data name="SentimentOverTime_Title" xml:space="preserve">
+    <value>Sentiment Over Time</value>
+  </data>
+  <data name="SentimentOverTime_Tooltip" xml:space="preserve">
+    <value>Sentiment Over Time</value>
+  </data>
+  <data name="AddAnAsset_FullTitle" xml:space="preserve">
+    <value>Add Asset</value>
+  </data>
+  <data name="AddAnAsset_Title" xml:space="preserve">
+    <value>Add Asset</value>
+  </data>
+  <data name="AddAnAsset_Tooltip" xml:space="preserve">
+    <value>Add Asset</value>
+  </data>
+  <data name="AssetLibraryFolder_FullTitle" xml:space="preserve">
+    <value>Asset Library</value>
+  </data>
+  <data name="AssetLibraryFolder_Title" xml:space="preserve">
+    <value>Asset Library</value>
+  </data>
+  <data name="AssetLibraryFolder_Tooltip" xml:space="preserve">
+    <value>Asset Library</value>
+  </data>
+  <data name="AssetLibrary_FullTitle" xml:space="preserve">
+    <value>Asset Library</value>
+  </data>
+  <data name="AssetLibrary_Title" xml:space="preserve">
+    <value>Asset Library</value>
+  </data>
+  <data name="AssetLibrary_Tooltip" xml:space="preserve">
+    <value>Asset Library</value>
+  </data>
+  <data name="ManageFolder_FullTitle" xml:space="preserve">
+    <value>Manage Folders</value>
+  </data>
+  <data name="ManageFolder_Title" xml:space="preserve">
+    <value>Manage Folders</value>
+  </data>
+  <data name="ManageFolder_Tooltip" xml:space="preserve">
+    <value>Manage Folders</value>
+  </data>
+  <data name="NewCampaign_Tooltip" xml:space="preserve">
+    <value>Campaign Builder</value>
+  </data>
+  <data name="AtreemoHelp_FullTitle" xml:space="preserve">
+    <value>FAQs &amp; Help</value>
+  </data>
+  <data name="AtreemoHelp_Title" xml:space="preserve">
+    <value>FAQs &amp; Help</value>
+  </data>
+  <data name="AtreemoHelp_Tooltip" xml:space="preserve">
+    <value>Frequently Asked Questions &amp; Help</value>
+  </data>
+  <data name="PublishSurvey_FullTitle" xml:space="preserve">
+    <value>Publish Survey</value>
+  </data>
+  <data name="PublishSurvey_Title" xml:space="preserve">
+    <value>Publish Survey</value>
+  </data>
+  <data name="PublishSurvey_Tooltip" xml:space="preserve">
+    <value>Publish Survey</value>
+  </data>
+  <data name="SurveyReporting_FullTitle" xml:space="preserve">
+    <value>Survey Reporting</value>
+  </data>
+  <data name="SurveyReporting_Title" xml:space="preserve">
+    <value>Survey Reporting</value>
+  </data>
+  <data name="SurveyReporting_Tooltip" xml:space="preserve">
+    <value>Survey Reporting</value>
+  </data>
+  <data name="SenderProfileManagement_FullTitle" xml:space="preserve">
+    <value>Sender Profile Management</value>
+  </data>
+  <data name="SenderProfileManagement_Title" xml:space="preserve">
+    <value>Sender Profile Management</value>
+  </data>
+  <data name="SenderProfileManagement_Tooltip" xml:space="preserve">
+    <value>Sender Profile Management</value>
+  </data>
+  <data name="QueryBuilderExportFile_FullTitle" xml:space="preserve">
+    <value>Analysis Exports</value>
+  </data>
+  <data name="QueryBuilderExportFile_Title" xml:space="preserve">
+    <value>Analysis Exports</value>
+  </data>
+  <data name="QueryBuilderExportFile_Tooltip" xml:space="preserve">
+    <value>Analysis Exports</value>
+  </data>
+  <data name="Communications_FullTitle" xml:space="preserve">
+    <value>Communications</value>
+  </data>
+  <data name="Communications_Title" xml:space="preserve">
+    <value>Communications</value>
+  </data>
+  <data name="Communications_Tooltip" xml:space="preserve">
+    <value>Communications</value>
+  </data>
+  <data name="EventRegistrations_FullTitle" xml:space="preserve">
+    <value>Event Registration</value>
+  </data>
+  <data name="EventRegistrations_Title" xml:space="preserve">
+    <value>Event Registration</value>
+  </data>
+  <data name="EventRegistrations_Tooltip" xml:space="preserve">
+    <value>Event Registration</value>
+  </data>
+  <data name="Event_FullTitle" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Event_Title" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Event_Tooltip" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="NewEvent_FullTitle" xml:space="preserve">
+    <value>New Event</value>
+  </data>
+  <data name="NewEvent_Title" xml:space="preserve">
+    <value>New Event</value>
+  </data>
+  <data name="NewEvent_Tooltip" xml:space="preserve">
+    <value>New Event</value>
+  </data>
+  <data name="Venues_FullTitle" xml:space="preserve">
+    <value>Venues</value>
+  </data>
+  <data name="Venues_Title" xml:space="preserve">
+    <value>Venues</value>
+  </data>
+  <data name="Venues_Tooltip" xml:space="preserve">
+    <value>Venues</value>
+  </data>
+</root>

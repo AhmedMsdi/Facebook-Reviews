@@ -1,0 +1,493 @@
+img{border:none;}
+
+/* COLUMN SORTING PANEL*/
+
+/* table */
+.eq-sortingpanel{
+    width:100%;
+}
+
+
+/* head(title) in panel */
+.eq-sortingpanel-header-expression, .eq-sortingpanel-header-sorting{
+    color: black;
+    font: normal 14px Calibri;
+}
+
+/* column style in table */
+.eq-sortingpanel-element-expr a{
+    color: #5a5a5a !important;
+    text-decoration: none;
+    font: bold 11px Arial;
+     padding-right:8px;
+}
+
+/* sorting style in table */
+.eq-sortingpanel-element-sorting a{
+    color: #5a5a5a !important;
+    text-decoration: none;
+    font: bold 11px Arial;    
+}
+
+.eq-sortingpanel-element-expr a:hover, .eq-sortingpanel-element-sorting a:hover{
+    text-decoration:underline;
+}
+
+
+/* arrow img in panel */
+.eq-sortingpanel-column-button a{
+    display:block;
+    background-image: url('images/eq-querypanel-button.png');
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-color: #fff;
+    width: 22px;
+    height: 17px;
+    text-indent: -1000px;
+}
+
+/* border bottom td in table*/
+.eq-sortingpanel td{
+    border-bottom: 1px solid silver;
+    padding:3px 10px;
+}
+
+/* "Click here" - add new elem */
+.eq-sortingpanel-addrow-element{
+    display: none;
+}
+/* END COLUMN SORTING PANEL */
+
+
+/* RESULT COLUMNS */
+
+/**/
+.eq-columnspanel-aggrrow a{
+    color: #5a5a5a !important;
+    text-decoration: none;
+    font: bold 11px Arial;
+}
+
+.eq-columnspanel-aggrrow a:hover{
+    text-decoration:underline;
+}
+
+/* expression style in table  */
+.eq-columnspanel-element-expr a{
+    color: #5a5a5a !important;
+    text-decoration: none;
+    font: bold 11px Arial;
+	padding-right:8px;
+}
+
+/* title style in table */
+.eq-columnspanel-element-title a{
+    color: #5a5a5a !important;
+    text-decoration: none;
+    font: bold 11px Arial;
+	padding-right:8px;
+}
+
+/* sorting style in table */
+.eq-columnspanel-element-sorting a{
+    color: #5a5a5a !important;
+    text-decoration: none;
+    font: bold 11px Arial;    
+}
+
+.eq-columnspanel-element-expr a:hover, .eq-columnspanel-element-title a:hover, .eq-columnspanel-element-sorting a:hover{
+    text-decoration:underline;
+}
+
+
+/* table settings */
+.eq-columnspanel{
+    width:100%;
+}
+
+/* border bottom after td */
+.eq-columnspanel td{
+    border-bottom:1px solid silver;
+    padding:3px 0;
+}
+
+/* header(title) in table */
+.eq-columnspanel-header td{
+    color:#000;
+    font:normal 14px Calibri;
+}
+
+/* "Click here" - add new column text */
+.eq-columnspanel-addrow-element{
+    display:none;
+}
+
+/* arrow image in panel */
+.eq-columnspanel-column-button a{
+    display:block;
+    background-image: url('images/eq-querypanel-button.png');
+    background-repeat: no-repeat;
+    background-color: #fff;
+    width:22px;
+    height:17px;
+    margin:0 10px;
+    text-indent:-1000px;
+}
+/* END RESULT COLUMNS */
+
+
+/* QUERY RESULT PANEL */
+
+/* td setings*/
+#ResultGrid td{
+    border:none;
+    padding:0 5px;
+    color:#4f4f4f;
+    font:10px Arial;
+}
+
+/* tr setings */
+#ResultGrid tr{
+    border-bottom:1px solid #e4e4e4;
+    background-color: #fff !important;
+    height:30px;
+}
+
+/* header(title) at each in table */
+#ResultGrid tr:first-child th{
+    background-color: #f6f6f6;
+    color:#4f4f4f;
+    height:30px;
+    font:bold 11px Arial !important;
+    border:none;
+    text-align:left;
+    padding-left:4px;
+    padding-right:4px;
+}
+
+/* if eror */
+#ResultLabel{
+    color:#000;
+    font:bold 16px Arial;
+    margin:20px 0;
+    text-align:center;
+    display: block;
+}
+
+/* table settings */
+#ResultGrid{
+    border:none !important;
+    width:100%;
+    text-align:left;  
+}
+
+/* END QUERY RESULT PANEL */
+
+
+/* QUERY CONDITION PANEL*/
+/* "Click here to add a new condition" - button */
+.eq-querypanel-addrow td{
+    display: none;
+}
+
+.eq-querypanel-addrow-element a{
+    padding: 0 0 0 20px;
+    font:normal 15px Calibri;
+}
+
+/* that there was no double border's! in panel */
+.eq-querypanel-rootrow td, .eq-querypanel-condition td, .eq-querypanel-predicate td{
+    border-bottom:none !important;
+    padding:3px 0 !important;
+ display:inline-block;
+    margin-bottom:0;
+}
+
+/* table - all query panel*/
+.eq-querypanel{
+    width:100%;
+}
+
+.eq-querypanel td{
+    border-bottom:1px solid silver;
+}
+
+/* image arrow in panel */
+.eq-querypanel-condition-button a{
+    display:block;
+    background-image: url('images/eq-querypanel-button.png');
+ background-repeat: no-repeat;
+    background-color: #fff;
+    width:22px;
+    height:17px;
+    margin:0 0 0 10px;
+    text-indent:-1000px;
+}
+.eq-querypanel-condition-button-disabled a{
+    display:block;
+    background-image: url('images/eq-querypanel-button-disabled.png');
+    background-repeat: no-repeat;
+    background-color: #fff;
+    width:22px;
+    height:17px;
+    margin:0 0 0 10px;
+    text-indent:-1000px;
+}
+
+/* text in head panel */
+.eq-querypanel-rootrow-element a{
+    font:bold 12px Arial;
+    color: #6D0000 !important;
+    text-decoration: none;
+}
+
+.eq-querypanel-rootrow-element a:hover{
+    text-decoration:underline;
+}
+
+.eq-querypanel-rootrow-element{
+    font:normal 12px Arial;
+    color:#4f4f4f;
+    word-spacing:1px;
+}
+
+
+/* spaces between words in all panel*/
+.eq-querypanel-condition, .eq-querypanel-predicate{
+    word-spacing: 1px;
+    padding: 0 0 0 10px;
+white-space:nowrap;
+}
+
+/* root row */
+.eq-querypanel-rootrow{
+    padding: 0 0 0 10px;
+}
+
+/* arrow in head panel */
+.eq-querypanel-root-button a{
+    display:block;
+    background-image: url('images/eq-querypanel-button.png');
+    background-repeat: no-repeat;
+    background-color: #fff;
+    width:22px;
+    height:17px;
+    text-indent:-100000px;
+}
+
+/* input's in panel & "enter value" */
+.eq-querypanel-element-expr div{
+    display:inline-block;
+}
+
+/* text in panel */
+.eq-querypanel-element-attr a, .eq-querypanel-element-operator a, .eq-querypanel-element-expr a, .eq-querypanel-predicate-element a{
+    font:bold 11px Arial;
+    color:#5a5a5a !important;
+    text-decoration:none;
+}
+
+.eq-querypanel-element-attr a:hover, .eq-querypanel-element-operator a:hover, .eq-querypanel-element-expr a:hover, .eq-querypanel-predicate-element a:hover{
+    text-decoration:underline;
+}
+
+/* next td after "Any"  - empty width */
+.eq-xrow-level-offset{
+    width:30px;
+}
+
+/* arrow img in "any" */
+.eq-querypanel-predicate-button a{
+    display: block;
+    background-image: url('images/eq-querypanel-button.png');
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 22px;
+    height: 17px;
+    margin: 0 10px;
+    text-indent: -1000px;
+}
+
+/* text after "any" */
+.eq-querypanel-predicate-element span{
+    font: normal 12px Arial;
+    color: #4F4F4F;
+    word-spacing: 1px;
+}
+
+
+/* ENTITIES AND ATTRIBUTES COLUMN */
+.eq-entitiespanel-tree>table{
+    width:100%;
+    margin: 2px 0;
+}
+
+/* checkbox */
+.eq-entitiespanel-tree input{
+    margin:0 5px 0 0;
+}
+
+/* table wish */
+.eq-entitiespanel-leafnode{
+    width: 100% !important;
+}
+
+.eq-entitiespanel-node{
+    width: 93%;
+}
+
+/* link's */
+.eq-entitiespanel-tree a{
+    color:#000 !important;
+    font:normal 12px Arial !important;
+}
+
+/* border 1px after images */
+.eq-entitiespanel-delimiter{
+    display: none;
+}
+
+/* options in panel */
+.eq-entitiespanel-treepanel{
+    padding:0 10px;
+    width:266px !important; /*93% !important;*/
+    height:301px !important;
+    margin:0 0 12px 0;
+}
+
+/* border-bottom in link */
+.eq-entitiespanel-tree table td{
+    border-bottom:1px solid #e4e4e4;
+    padding:2px 0;
+}
+
+/* bottom buttons */
+.eq-entitiespanel-toolpanel table td{
+        width: 0 !important;
+                  
+}
+
+.eq-entitiespanel-toolpanel table {
+        width: 275px !important;
+                  
+}
+
+.eq-entitiespanel-toolpanel table div{
+    *display:inline !important; 
+}
+
+
+
+/* select all */
+.eq-entitiespanel-panel-selectall{
+    margin:0 18px;
+    _overflow:hidden;
+    *zoom:1;
+    *display:inline !important;
+}
+.eq-entitiespanel-panel-selectall span{
+    display:none;
+}
+
+.eq-entitiespanel-panel-selectall input{
+    padding: 0 0 0 27px;
+    background-image: url('images/atributSelectAll.png');
+    background-color: #fff;
+    background-position: 1px;
+    background-repeat: no-repeat;
+    width: 0 !important;
+}
+@-moz-document url-prefix() {
+  .eq-entitiespanel-panel-selectall input, .eq-entitiespanel-panel-selectnone input,
+  .eq-entitiespanel-panel-addcolumns input, .eq-entitiespanel-panel-addconditions input {padding:0 0 11px 27px !important;}
+}
+
+.eq-entitiespanel-panel-selectall:hover input{
+    background-image: url('images/atributSelectAllHover.png');
+}
+
+/* select none */
+.eq-entitiespanel-panel-selectnone{
+    _overflow:hidden;
+    *zoom:1;
+    *display:inline !important;
+    padding-left: 20px;
+}
+.eq-entitiespanel-panel-selectnone span{
+    display: none;
+}
+.eq-entitiespanel-panel-selectnone input{
+    padding: 0 22px 0 27px;
+    background-image: url('images/atributeDeselectAll.png');
+    background-color: #fff;
+    background-position: 1px;
+    background-repeat: no-repeat;
+}
+.eq-entitiespanel-panel-selectnone:hover input{
+    background-image: url('images/atributeDeselectAllHover.png');
+}
+
+/* add columns */
+.eq-entitiespanel-panel-addcolumns{
+    _overflow:hidden;
+    *zoom:1;
+    *display:inline !important;
+    *margin: 0 !important;
+}
+
+.eq-entitiespanel-panel-addcolumns span{
+    display: none;    
+}
+
+.eq-entitiespanel-panel-addcolumns input{
+    padding: 0 0 0 27px;
+    background-image: url('images/atributeAddColumns.png');
+    background-color: #fff;
+    background-position: 1px;
+    background-repeat: no-repeat;
+}
+.eq-entitiespanel-panel-addcolumns:hover input{
+    background-image: url('images/atributeAddColumnsHover.png');
+}
+
+
+/* add conditions */
+.eq-entitiespanel-panel-addconditions{
+    margin:0 0 0 18px;
+    _overflow:hidden;
+    *zoom:1;
+    *display:inline !important; 
+}
+.eq-entitiespanel-panel-addconditions span{
+    display: none;     
+}
+
+.eq-entitiespanel-panel-addconditions input{
+    padding: 0 22px 0 27px;
+    background-image: url('images/atributeAddTerm.png');
+    background-color: #fff;
+    background-position: 1px;
+    background-repeat: no-repeat;
+}
+.eq-entitiespanel-panel-addconditions:hover input{
+    background-image: url('images/atributeAddTermHover.png');
+}
+
+/**************/
+
+.eq-element-space
+{
+    width: 10px;
+}
+
+.eq-xrow-level-offset
+{
+    width: 24px;
+}
+.eq-element-disabled span, .eq-element-disabled a, .eq-element-disabled a:hover
+{
+    color: #a3bbd7 !important;
+    text-decoration: none;
+    font: bold 11px Arial;    
+}

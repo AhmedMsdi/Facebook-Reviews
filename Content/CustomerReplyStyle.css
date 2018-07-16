@@ -1,0 +1,19 @@
+﻿@media only screen and (max-width: 479px) 
+    { [class="FixWidth"] { max-width: 340px !important; width: 340px !important; } [class="hideOnMobile"] { display: none; } 
+    }
+body {
+     background-color: #545454 !important;
+     color: #ffffff !important;
+}
+.FormTitle {
+    background: #953734;
+    color: #ffffff;
+    width: 100%;
+    /* height: 50px; */
+    /*font: bold Arial,sans-serif;*/
+    font-size: 24px;
+}
+.TitleStyle {
+    padding: 10px;
+    font-weight: bold;
+}

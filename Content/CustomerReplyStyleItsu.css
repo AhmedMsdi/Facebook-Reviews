@@ -1,0 +1,32 @@
+﻿@media only screen and (max-width: 479px) 
+    { [class="FixWidth"] { max-width: 340px !important; width: 340px !important; } [class="hideOnMobile"] { display: none; } 
+    }
+/* Itsu Style CSS*/
+body {
+     background-color: #FFFFFF !important;
+     color: #000000 !important;
+}
+
+
+.FormTitle {
+    background: #e53e96;
+    color: #ffffff;
+    width: 100%;
+    /* height: 50px; */
+    /*font: bold Arial,sans-serif;*/
+    font-size: 24px;
+}
+.TitleStyle {
+    padding: 10px;
+    padding-left:20px;
+    font-weight: bold;
+}
+
+ .DefaultButtonStyle:hover {
+        -moz-transition: background-position 0.1s linear 0s;
+        background-color: #e53e96;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 500;
+        font-family: Verdana;
+    }

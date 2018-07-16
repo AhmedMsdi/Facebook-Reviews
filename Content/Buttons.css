@@ -1,0 +1,897 @@
+﻿/*BUTTON STYLE------------------------------------------------------------*/
+.DefaultButtonStyle {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 0;
+    min-width: 100px;
+    padding: 2px 10px 4px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #363940;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    font-family: "gothamBold";
+    font-weight: normal;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    font-family: Verdana;
+    margin: 2px;
+}
+
+    .DefaultButtonStyle:hover {
+        -moz-transition: background-position 0.1s linear 0s;
+        background-color: #108cc4;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 500;
+        font-family: Verdana;
+    }
+
+.SelectedButtonStyle {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 0;
+    min-width: 100px;
+    padding: 2px 10px 4px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #108cc4;
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    font-family: "gothamBold";
+    font-weight: normal;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    font-family: Verdana;
+    margin: 2px;
+}
+
+    .SelectedButtonStyle:hover {
+        -moz-transition: background-position 0.1s linear 0s;
+        background-color: #363940;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 500;
+        font-family: Verdana;
+    }
+
+
+
+.ButtonStyle {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-style: solid;
+    min-width: 100px;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 0;
+    padding: 2px 10px 4px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #6d0000;
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    font-family: "gothamBold";
+    font-weight: normal;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    font-family: Verdana;
+    margin: 2px;
+}
+
+    .ButtonStyle:hover {
+        -moz-transition: background-position 0.1s linear 0s;
+        background-color: #363940;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 500;
+        font-family: Verdana;
+    }
+
+.DisabledButtonStyle {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    min-width: 100px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: not-allowed;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 0;
+    padding: 2px 10px 4px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #f1f1f1;
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    font-family: "gothamBold";
+    font-weight: normal;
+    color: #000000;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    font-family: Verdana;
+    cursor: not-allowed !important;
+    margin: 2px;
+}
+
+
+
+.Edit {
+    min-height: 24px !important;
+    border: none !important;
+    border: none;
+    min-width: 24px !important;
+    max-width: 24px !important;
+    min-width: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/edit24.png') !important;
+}
+
+    .Edit:hover, Edit:active, Edit:focus {
+        min-height: 24px !important;
+        border: none !important;
+        min-width: 24px !important;
+        max-width: 24px !important;
+        min-width: 24px !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/edit24.png') !important;
+    }
+
+.Stat {
+    min-height: 24px !important;
+    border: none !important;
+    border: none;
+    min-width: 24px !important;
+    max-width: 24px !important;
+    min-width: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/dashboardb.png') !important;
+}
+
+    .Stat:hover, Stat:active, Stat:focus {
+        min-height: 24px !important;
+        border: none !important;
+        min-width: 24px !important;
+        max-width: 24px !important;
+        min-width: 24px !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/dashboardb.png') !important;
+    }
+
+
+.ConnectAs {
+    min-height: 24px !important;
+    border: none !important;
+    border: none;
+    min-width: 24px !important;
+    max-width: 24px !important;
+    min-width: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/ConnectAs.png') !important;
+    background-size: contain;
+}
+
+    .ConnectAs:hover, ConnectAs:active, ConnectAs:focus {
+        min-height: 24px !important;
+        border: none !important;
+        min-width: 24px !important;
+        max-width: 24px !important;
+        min-width: 24px !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/ConnectAs.png') !important;
+        background-size: contain;
+    }
+
+
+/*With Background For UserName and Password*/
+.EditButton {
+    border-style: none;
+    height: 28px !important;
+    border: none !important;
+    width: 28px !important;
+    border-radius: 2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/edit24.png') !important;
+    background-position: center;
+}
+
+    .EditButton:hover, EditButton:active, EditButton:focus {
+        height: 28px !important;
+        width: 28px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/edit24.png') !important;
+        background-position: center;
+    }
+
+
+.Add {
+    min-height: 24px !important;
+    border: none !important;
+    border: none;
+    min-width: 24px !important;
+    max-width: 24px !important;
+    min-width: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/add24.png') !important;
+}
+
+    .Add:hover, Add:active, Add:focus {
+        min-height: 24px !important;
+        min-width: 24px !important;
+        border: none !important;
+        max-width: 24px !important;
+        min-width: 24px !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/add24.png') !important;
+    }
+
+.Delete {
+    min-height: 24px !important;
+    border: none;
+    border: none !important;
+    min-width: 24px !important;
+    max-width: 24px !important;
+    min-width: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-size: cover;
+    background-image: url('./images/Functions/Delete.png') !important;
+}
+
+    .Delete:hover, Delete:active, Delete:focus {
+        min-height: 24px !important;
+        min-width: 24px !important;
+        border: none !important;
+        max-width: 24px !important;
+        min-width: 24px !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-size: cover;
+        background-image: url('./images/Functions/Delete.png') !important;
+    }
+
+.Open {
+    min-height: 24px !important;
+    border: none;
+    min-width: 24px !important;
+    border: none !important;
+    max-width: 24px !important;
+    min-width: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/open24.png') !important;
+}
+
+    .Open:hover, Open:active, Open:focus {
+        min-height: 24px !important;
+        min-width: 24px !important;
+        max-width: 24px !important;
+        min-width: 24px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/open24.png') !important;
+    }
+
+
+
+
+.SearchBtn, SearchBtn:hover, SearchBtn:active, SearchBtn:focus {
+    min-height: 26px !important;
+    border: none;
+    border: none !important;
+    min-width: 23px !important;
+    max-height: 26px !important;
+    min-width: 23px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/search.png') !important;
+}
+
+/* Disabled Icon*/
+.IconDisabled {
+    cursor: pointer;
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+    .IconDisabled:hover {
+        cursor: pointer;
+        opacity: 1;
+        filter: alpha(opacity=100); /* For IE8 and earlier */
+    }
+
+.SubmitBtnWithImage {
+    border: 0;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 42px;
+    height: 42px;
+}
+
+.approveBtn {
+    background-image: url("images/Functions/approve.png");
+}
+
+.cancelBtn {
+    background-image: url("images/Functions/close without save or delete.png");
+}
+
+.printBtn {
+    background-image: url("images/Functions/print.png");
+}
+
+.deleteBtn {
+    background-image: url("images/Functions/Delete.png");
+}
+
+.hashBtn {
+    background-image: url("images/Functions/Encrypt.png");
+}
+
+.designBtn {
+    background-image: url("images/Functions/design.png");
+}
+
+.ScheduledReport {
+    background-image: url("images/Functions/ScheduledReport.png");
+}
+
+.ExportToPdfBtn {
+    background-image: url("images/Functions/save to pdf.png");
+}
+
+.FilterBtn {
+    background-image: url("images/Functions/filter.png");
+}
+
+.RemoveFilterBtn {
+    background-image: url("images/Functions/Removefilter.png");
+}
+
+.FilterContactBtn {
+    background-image: url("images/Dashboards/FilterContact.jpg");
+}
+
+.RemoveFilterContactBtn {
+    background-image: url("images/Dashboards/RemoveFIlterContact.jpg");
+}
+
+.FilterCompanyBtn {
+    background-image: url("images/Dashboards/FilterCompany.jpg");
+}
+
+.RemoveFilterCompanyBtn {
+    background-image: url("images/Dashboards/RemoveFilterCompany.jpg");
+}
+
+.saveBtn {
+    background-image: url("images/Functions/save.png");
+}
+
+.BrowseBtn {
+    background-image: url("images/Functions/browse.png");
+}
+
+.settingsBtn {
+    background-image: url("images/Functions/settings.png");
+}
+
+.newBtn {
+    background-image: url("images/NewDash.png");
+}
+
+
+.Overview {
+    min-height: 24px !important;
+    border: none;
+    min-width: 24px !important;
+    max-width: 24px !important;
+    border: none !important;
+    min-width: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-size: cover;
+    background-image: url('./images/Functions/overview, search or preview.png') !important;
+}
+
+    .Overview:hover, Overview:active, Overview:focus {
+        min-height: 24px !important;
+        min-width: 24px !important;
+        max-width: 24px !important;
+        min-width: 24px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-size: cover;
+        background-image: url('./images/Functions/overview, search or preview.png') !important;
+    }
+
+
+/*Campaign summary class*/
+
+.CampaignEmail, CampaignEmail:hover, CampaignEmail:active, CampaignEmail:focus {
+    min-height: 26px !important;
+    border: none;
+    min-width: 33px !important;
+    max-height: 26px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/email.png') !important;
+}
+
+
+.CampaignSMS, CampaignSMS:hover, CampaignSMS:active, CampaignSMS:focus {
+    min-height: 26px !important;
+    border: none;
+    min-width: 33px !important;
+    max-height: 26px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/sms.png') !important;
+}
+
+.CampaignDM, CampaignDM:hover, CampaignDM:active, CampaignDM:focus {
+    min-height: 26px !important;
+    border: none;
+    min-width: 33px !important;
+    max-height: 26px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/letter.png') !important;
+}
+
+.CampaignPush, CampaignPush:hover, CampaignPush:active, CampaignPush:focus {
+    min-height: 26px !important;
+    border: none;
+    min-width: 33px !important;
+    max-height: 26px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/pushnotification.png') !important;
+}
+
+.CampaignReUse, CampaignReUse:hover, CampaignReUse:active, CampaignReUse:focus {
+    border: none;
+    min-width: 24px !important;
+    max-height: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/reuse.png') !important;
+}
+
+    .CampaignReUse.disabled {
+        box-shadow: none;
+        cursor: not-allowed;
+        opacity: 0.35;
+    }
+
+.CampaignOverView, CampaignOverView:hover, CampaignOverView:active, CampaignOverView:focus {
+    border: none;
+    min-width: 24px !important;
+    max-height: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/overview.png') !important;
+}
+
+    .CampaignOverView.disabled {
+        box-shadow: none;
+        cursor: not-allowed;
+        opacity: 0.35;
+    }
+
+.CampaignStats, CampaignStats:hover, CampaignStats:active, CampaignStats:focus {
+    border: none;
+    min-width: 24px !important;
+    max-height: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/dashboard.png') !important;
+}
+
+    .CampaignStats.disabled {
+        box-shadow: none;
+        cursor: not-allowed;
+        opacity: 0.35;
+    }
+
+.CampaignEdit, CampaignEdit:hover, CampaignEdit:active, CampaignEdit:focus {
+    border: none;
+    min-width: 24px !important;
+    max-height: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/edit24.png') !important;
+}
+
+    .CampaignEdit.disabled {
+        box-shadow: none;
+        cursor: not-allowed;
+        opacity: 0.35;
+    }
+
+.BtnDisabled {
+    box-shadow: none;
+    cursor: not-allowed !important;
+    opacity: 0.35;
+}
+
+/*END*/
+
+/* SMS */
+.ResendSMS, ResendSMS:hover, ResendSMS:active, ResendSMS:focus {
+    border: none !important;
+    min-width: 24px !important;
+    max-height: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-size: contain;
+    height: 24px;
+    background-image: url('./images/Comms/ResendSMS.png') !important;
+}
+/*END*/
+@media screen and (max-width:1524px) and (min-width:700px) { /* hi-res laptops and desktops */
+
+    /*Dashboard style*/
+    .FilterBtn, .saveBtn, .ExportToPdfBtn, .designBtn, .BrowseBtn, .settingsBtn {
+        background-size: 40px 40px;
+        width: 40px !important;
+        height: 40px !important;
+        background-repeat: no-repeat;
+    }
+}
+
+
+.SaveBtnV, SaveBtnV:hover, SaveBtnV:active, SaveBtnV:focus {
+    min-height: 40px !important;
+    border: none;
+    border: none !important;
+    min-width: 40px !important;
+    max-height: 40px !important;
+    min-width: 40px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/savev.png') !important;
+}
+/* Changed BY HAMDI - PLEASE USE ANOTHER CLASS
+.ExportToPdfBtn, ExportToPdfBtn:hover, ExportToPdfBtn:active, ExportToPdfBtn:focus {
+    min-height: 30px !important;
+    border: none;
+    border: none !important;
+    min-width: 30px !important;
+    max-height: 30px !important;
+    min-width: 30px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/savetopdf.png') !important;
+}             
+*/
+
+.ExportToPdfBtn, ExportToPdfBtn:hover, ExportToPdfBtn:active, ExportToPdfBtn:focus {
+    min-height: 40px !important;
+    border: none;
+    border: none !important;
+    min-width: 40px !important;
+    max-height: 40px !important;
+    min-width: 40px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/savetopdf.png') !important;
+}
+
+.AddSection {
+    border-style: none;
+    height: 28px !important;
+    border: none !important;
+    width: 28px !important;
+    border-radius: 2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/addSectionIcon.png') !important;
+    background-position: center;
+}
+
+    .AddSection:hover, AddSection:active, AddSection:focus {
+        height: 28px !important;
+        width: 28px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/addSectionIcon.png') !important;
+        background-position: center;
+    }
+
+
+.SaveButton {
+    border-style: none;
+    height: 28px !important;
+    border: none !important;
+    width: 28px !important;
+    border-radius: 2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/SaveIcon.png') !important;
+    background-position: center;
+}
+
+    .SaveButton:hover, SaveButton:active, SaveButton:focus {
+        height: 28px !important;
+        width: 28px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/SaveIcon.png') !important;
+        background-position: center;
+    }
+
+.PreviewButton {
+    border-style: none;
+    height: 28px !important;
+    border: none !important;
+    width: 28px !important;
+    border-radius: 2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/PrviewIcon.png') !important;
+    background-position: center;
+}
+
+    .PreviewButton:hover, PreviewButton:active, PreviewButton:focus {
+        height: 28px !important;
+        width: 28px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/PrviewIcon.png') !important;
+        background-position: center;
+    }
+
+.NGUp {
+    border-style: none;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    border-radius: 2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/Up.png') !important;
+    background-position: center;
+}
+
+    .NGUp:hover, NGUp:active, NGUp:focus {
+        height: 25px !important;
+        width: 25px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/Up.png') !important;
+        background-position: center;
+    }
+
+.NGUpDisabled {
+    border-style: none;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    border-radius: 2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/Up.png') !important;
+    background-position: center;
+    cursor: not-allowed;
+}
+
+.NGDown {
+    border-style: none;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    border-radius: 2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/Down.png') !important;
+    background-position: center;
+}
+
+    .NGDown:hover, NGDown:active, NGDown:focus {
+        height: 25px !important;
+        width: 25px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/Down.png') !important;
+        background-position: center;
+    }
+
+.NGDownDisabled {
+    border-style: none;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    border-radius: 2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/Down.png') !important;
+    background-position: center;
+}
+
+.NGDelete {
+    border-style: none;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    border-radius: 2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/Delete.png') !important;
+    background-position: center;
+}
+
+    .NGDelete:hover, NGDelete:active, NGDelete:focus {
+        height: 25px !important;
+        width: 25px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/Delete.png') !important;
+        background-position: center;
+    }
+
+.NGApply {
+    border-style: none;
+    height: 25px !important;
+    border: none !important;
+    width: 25px !important;
+    border-radius: 2px;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/Functions/add24.png') !important;
+    background-position: center;
+}
+
+    .NGApply:hover, NGApply:active, NGApply:focus {
+        height: 25px !important;
+        width: 25px !important;
+        border: none !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 2px;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Functions/add24.png') !important;
+        background-position: center;
+    }
+
+
+.DisplayInMap {
+    min-height: 24px !important;
+    border: none !important;
+    border: none;
+    min-width: 24px !important;
+    max-width: 24px !important;
+    min-width: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-size: cover;
+    background-image: url('./images/Mapping/Search.png') !important;
+}
+
+    .DisplayInMap:hover, DisplayInMap:active, DisplayInMap:focus {
+        min-height: 24px !important;
+        border: none !important;
+        min-width: 24px !important;
+        max-width: 24px !important;
+        min-width: 24px !important;
+        border-color: gray;
+        border-width: 1px;
+        border-style: solid;
+        background-size: cover;
+        background-color: transparent !important;
+        background-repeat: no-repeat !important;
+        background-image: url('./images/Mapping/Search.png') !important;
+    }
+
+.saveBtn {
+    background-image: url('../../Content/images/Mapping/saveSelect.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+}

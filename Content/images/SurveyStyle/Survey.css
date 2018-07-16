@@ -1,0 +1,320 @@
+﻿body {
+}
+
+.PanelGlob {
+    background-color: white;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    margin-top: 5px;
+}
+
+.PanelPageBody0 {
+    margin-left: 4px;
+    margin-bottom: 5px;
+    width: 950px;
+    background-color: White;
+    border-color: Black;
+    border-style: dashed;
+    border-width: 1px;
+    margin-top: 10px;
+}
+
+.BlackLabel {
+    color: white;
+    background-color: #4b4b4b;
+    border: 1px solid #4b4b4b;
+}
+
+.DeleteSurvey {
+    min-height: 24px !important;
+    border: none;
+    min-width: 24px !important;
+    max-width: 24px !important;
+    min-width: 24px !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-image: url('./images/SurveyImage/DeleteSurvey.png') !important;
+}
+
+.SurveyTitleGrayDiv {
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 700px;*/
+    Width: 100%;
+    border-color: #8601af;
+    background-color: #8601af;
+    color: white;
+    font-weight: bold;
+    height: 35px;
+    font-size: x-large;
+}
+
+.SurveyIntroGrayDiv {
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 1010px;*/
+    Width: 100%;
+    border-color: #0247fe;
+    background-color: #0247fe;
+    color: white;
+    height: 25px;
+}
+
+.SurveyTitleBlackDiv {
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 700px;*/
+    Width: 100%;
+    border-color: #35354F;
+    background-color: #35354F;
+    color: white;
+    font-weight: bold;
+    height: 35px;
+    font-size: x-large;
+}
+
+.SurveyIntroBlackDiv {
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 1010px;*/
+    Width: 100%;
+    border-color: #677FAD;
+    background-color: #677FAD;
+    color: white;
+    height: 25px;
+}
+
+.SurveyTitleSpringDiv {
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 700px;*/
+    Width: 100%;
+    border-color: #ec018c;
+    background-color: #ec018c;
+    color: white;
+    font-weight: bold;
+    height: 35px;
+    font-size: x-large;
+}
+
+.SurveyIntroSpringDiv {
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 1010px;*/
+    Width: 100%;
+    border-color: #c1d72e;
+    background-color: #c1d72e;
+    color: Black;
+    height: 25px;
+}
+
+.SurveyTitleAutumnDiv {
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 700px;*/
+    Width: 100%;
+    border-color: #663300;
+    background-color: #663300;
+    color: white;
+    font-weight: bold;
+    height: 35px;
+    font-size: x-large;
+}
+
+.SurveyIntroAutumnDiv {
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 1010px;*/
+    Width: 100%;
+    border-color: #996600;
+    background-color: #996600;
+    color: white;
+    height: 25px;
+}
+
+.SurveyTitleHeatDiv {
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 700px;*/
+    Width: 100%;
+    border-color: #000000;
+    background-color: #000000;
+    color: white;
+    font-weight: bold;
+    height: 35px;
+    font-size: x-large;
+}
+
+.SurveyIntroHeatDiv {
+    border-width: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 1010px;*/
+    Width: 100%;
+    border-color: #ff0000;
+    background-color: #ff0000;
+    color: white;
+    height: 25px;
+}
+
+.SurveyTitleMustardDiv {
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 700px;*/
+    Width: 100%;
+    border-color: #8F8F00;
+    background-color: #8F8F00;
+    color: white;
+    font-weight: bold;
+    height: 35px;
+    font-size: x-large;
+}
+
+.SurveyIntroMustardDiv {
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 1010px;*/
+    Width: 100%;
+    border-color: #D9DABF;
+    background-color: #D9DABF;
+    color: white;
+    height: 25px;
+}
+
+.SurveyTitleSplashDiv {
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 700px;*/
+    Width: 100%;
+    border-color: #183D68;
+    background-color: #183D68;
+    color: white;
+    font-weight: bold;
+    height: 35px;
+    font-size: x-large;
+}
+
+.SurveyIntroSplashDiv {
+    border-width: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 1010px;*/
+    Width: 100%;
+    border-color: #77ABD6;
+    background-color: #77ABD6;
+    color: white;
+    height: 25px;
+}
+
+.SurveyTitleWhiteDiv {
+    border-width: 2px;
+    margin-left: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 700px;*/
+    Width: 100%;
+    border-color: white;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    height: 35px;
+    font-size: x-large;
+}
+
+.SurveyIntroWhiteDiv {
+    border-width: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    /*width: 1010px;*/
+    Width: 100%;
+    border-color: white;
+    background-color: white;
+    color: black;
+    height: 25px;
+}
+
+.PageTitle {
+    margin-bottom: 5px;
+    margin-left: 0px;
+    text-align: left;
+    /*Width: 950px;*/
+    Width: 99%;
+    Height: 40px;
+    border: 1px solid #4b4b4b;
+    background-color: #4b4b4b;
+    color: white;
+}
+
+.Page {
+    margin-left: 4px;
+    margin-bottom: 5px;
+    /*width: 950px;*/
+    Width: 100%;
+    background-color: White;
+    border-color: Black;
+    border-style: dashed;
+    border-width: 1px;
+    margin-top: 10px;
+}
+
+.DivQuestion {
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    margin: 10px;
+}
+.BTNAddQuestion {
+      Height: 29px;
+  Width: 150px;
+  /*margin-left: 425px;*/
+  margin-top: 50px;
+  margin-bottom: 50px;
+  -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 18px;
+    padding: 2px 10px 4px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #6d0000;
+    background-image: -moz-linear-gradient(center top, #6d0000, #000000);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-radius: 0 0 0 0;
+    font-family: "gothamBold";
+    font-weight: normal;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    font-family: Verdana;
+}

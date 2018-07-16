@@ -1,0 +1,405 @@
+﻿@model Atrremo.Models.LoginModel
+@{
+   Layout = null;
+    bool IsArrowSpecific = ((System.Configuration.ConfigurationManager.AppSettings["ArrowSpecific"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["ArrowSpecific"].ToString().ToLower() == "yes") : false);
+    string InstanceHomeLogoPath = ((System.Configuration.ConfigurationManager.AppSettings["InstanceHomeLogoPath"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceHomeLogoPath"].ToString() : "");
+    string InstanceHomeLogoLink = ((System.Configuration.ConfigurationManager.AppSettings["InstanceHomeLogoLink"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceHomeLogoLink"].ToString() : "");
+    string InstanceHomeBannerPath = ((System.Configuration.ConfigurationManager.AppSettings["InstanceHomeBannerPath"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceHomeBannerPath"].ToString() : "");
+    bool IsToshibaSpecific = ((System.Configuration.ConfigurationManager.AppSettings["ToshibaSpecific"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["ToshibaSpecific"].ToString().ToLower() == "yes") : false);
+    bool InstanceHomeBannerAsDivBackgroundImage = ((System.Configuration.ConfigurationManager.AppSettings["InstanceHomeBannerAsDivBackgroundImage"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["InstanceHomeBannerAsDivBackgroundImage"].ToString().ToLower() == "yes") : false);
+    string InstanceName = (System.Configuration.ConfigurationManager.AppSettings["IntanceName"] != null) ? System.Configuration.ConfigurationManager.AppSettings["IntanceName"].ToString() : "Atreemo";
+    string InstanceFavicon = (System.Configuration.ConfigurationManager.AppSettings["IntanceFavicon"] != null) ? System.Configuration.ConfigurationManager.AppSettings["IntanceFavicon"].ToString() : "favicon.png";
+    string InstanceLogo = (System.Configuration.ConfigurationManager.AppSettings["InstanceLogo"] != null) ? System.Configuration.ConfigurationManager.AppSettings["InstanceLogo"].ToString() : "../Content/images/Logo/AtreemoLogo.png";
+    string SocialMediaWebServiceURL = System.Configuration.ConfigurationManager.AppSettings["SocialMediaWebServiceURL"];
+    string AppID = System.Configuration.ConfigurationManager.AppSettings["AppID"];
+    string FbVersion = System.Configuration.ConfigurationManager.AppSettings["FbVersion"];
+    string FacebookUserApiURL = ((System.Configuration.ConfigurationManager.AppSettings["FacebookUserApiURL"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["FacebookUserApiURL"].ToString()) : "");
+    string LDAP = (System.Configuration.ConfigurationManager.AppSettings["LDAPCaption"]);
+    string CustomerCode = ((System.Configuration.ConfigurationManager.AppSettings["CustomerCode"] != null) ? (System.Configuration.ConfigurationManager.AppSettings["CustomerCode"].ToString()) : "");
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>@(string.IsNullOrEmpty(@ViewBag.Title) ? "" : @ViewBag.Title + " - ") @InstanceName</title>
+    <link rel="apple-touch-icon" href="/@InstanceFavicon" />
+    <link href="../Content/LoginStyle/darktheme/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/LoginStyle/darktheme/css/main.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../Content/LoginStyle/Moneyween/font/css/font-awesome.min.css" rel="stylesheet">
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+
+        function validateEmail(email) {
+            var re = /^([\w-]+(?:\.[\w-]+)*)@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            return re.test(email);
+        }
+
+    </script>
+
+    <style type="text/css">
+        /* Set password Icon Width*/
+        .fa-lock {
+            width: 11px !important;
+        }
+
+        .input-group-addon {
+            background-color: white !important;
+        }
+
+
+        body {
+            line-height: 42px;
+            font-family: 'Source Sans Pro', sans-serif;
+            margin: 0;
+            background-color: #FFFFFF;
+        }
+
+        .Top-LinkBox {
+            padding: 15px !important;
+        }
+
+        .Top-Link {
+            font-size: 1.2em;
+            color: gray !important;
+        }
+
+        .MainBox {
+            height: 614px;
+            margin: 0;
+        }
+
+            .MainBox > img {
+                width: 100%;
+                /*min-width: 700px;*/
+            }
+
+        .TitleLoginBox {
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .Title {
+            font-size: 3.5em;
+            color: white;
+            font-weight: bold;
+            margin-top: 24px;
+            margin-left: 20px;
+        }
+
+        .AuthentificationBox {
+            max-width: 562px;
+            min-height: 336px;
+            background-color: red;
+            border: 1px solid #ddd;
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 25px;
+            /*margin-left: 120px;*/
+        }
+
+
+        .Footer {
+            color: #6D6D6D;
+            padding: 10px 0;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+
+        table {
+            line-height: 15px;
+            margin: 0;
+        }
+    </style>
+
+    <script>
+        // Load the SDK asynchronously
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '@AppID',
+                cookie: true,  // enable cookies to allow the server to access
+                // the session
+                xfbml: true,  // parse social plugins on this page
+                version: '@FbVersion'
+            });
+
+            // Now that we've initialized the JavaScript SDK, we call
+            // FB.getLoginStatus().  This function gets the state of the
+            // person visiting this page and can return one of three states to
+            // the callback you provide.  They can be:
+            //
+            // 1. Logged into your app ('connected')
+            // 2. Logged into Facebook, but not your app ('not_authorized')
+            // 3. Not logged into Facebook and can't tell if they are logged into
+            //    your app or not.
+            //
+            // These three cases are handled in the callback function.
+
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response, null);
+            });
+        };
+        // This is called with the results from from FB.getLoginStatus().
+        function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            // The response object is returned with a status field that lets the
+            // app know the current login status of the person.
+            // Full docs on the response object can be found in the documentation
+            // for FB.getLoginStatus().
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+                uid = response.authResponse.userID;
+                accessToken = response.authResponse.accessToken;
+                GetUserPage();
+                sendUserToAPI(response.authResponse.accessToken);
+            } else if (response.status === 'not_authorized') {
+                // The person is logged into Facebook, but not your app.
+            } else {
+                // The person is not logged into Facebook, so we're not sure if
+                // they are logged into this app or not.
+            }
+        }
+
+        function sendUserToAPI(token) {
+            var user = {};
+            user.Access_Token = token;
+            user.Client_User_ID = "";
+            user.Age_Range = "";
+            user.User_Name = "";
+            user.Access_Token_Date = "";
+            user.FBAppID = "@AppID";
+            FB.api('/me', { fields: 'id,first_name,last_name,email,gender' }, function (response) {
+                user.ID = response.id;
+                user.First_Name = response.first_name;
+                user.Last_Name = response.last_name;
+                user.Email = response.email;
+                user.Gender = response.gender;
+
+                FB.api('/' + response.id + '/picture', function (response) {
+                    var picture = typeof picture.data != "undefined" && typeof picture.data.url != "undefined" ? picture.data.url : "";
+                    if (picture != "") {
+                        $("#header-picture img").show();
+                        $("#header-picture img").attr("src", picture);
+                    } else {
+                        $("#header-picture img").hide();
+                    }
+
+                    user.Picture = response.data.url;
+                    sendToAPI(user);
+                });
+            });
+        }
+
+        function sendToAPI(user) {
+            @*$.ajax({
+                url: "@FacebookUserApiURL?CustomerCode=@CustomerCode",
+                method: "POST",
+                data: user,
+                success: function (resultat) {
+                    //console.log(resultat);
+                }
+            });*@
+            $.ajax({
+                url: "@FacebookUserApiURL",
+                method: "POST",
+                data: user,
+                success: function (resultat) {
+                    //console.log(resultat);
+                }
+            });
+        }
+
+        function GetUserPage() {
+            FB.api('/me/accounts', function (response) {
+                //$("#dfbpages").empty();
+                var Pages = [];
+                $.each(response.data, function (i, item) {
+                    //$("#dfbpages").append("<input type='checkbox' id='pbpages' value='" + item.id + "' text='" + item.name + "' acctoken='" + item.access_token + "'>" + item.name + "</input>");
+                    Pages.push({
+                        PageID: item.id,
+                        PageName: item.name,
+                        MediaID: 1,
+                        SocialUserID: uid,
+                        AtreemoUserID: 123,
+                        UserAccessToken: accessToken,
+                        PageAccessToken: item.access_token
+                    });
+                });
+
+                var API = '@SocialMediaWebServiceURL' + "/SocialMediaSvc.svc/UpdateUserPagesAccessToken?";
+                var Jmsg = {};
+                Jmsg.UserPages = Pages;
+                Data = JSON.stringify(Jmsg);
+
+                Type = "POST";
+                ContentType = "application/json; charset=utf-8";
+                DataType = "json";
+                ProcessData = false;
+                $.ajax({
+                    type: Type, //GET or POST or PUT or DELETE verb
+                    url: API, // Location of the service
+                    data: Data, //Data sent to server
+                    contentType: ContentType, // content type sent to server
+                    dataType: DataType, //Expected data format from server
+                    crossDomain: true,
+                    processdata: ProcessData, //True or False
+                    timeout: 3600 * 5,
+                    success: function (msg) {//On Successfull service call
+                    },
+                    error:
+                        ServiceFailed// When Service call fails
+                });
+                function ServiceFailed(result) {
+                    //alert('Service call failed: ' + result.status + '' + result.statusText);
+                    Type = null;
+                    Url = null;
+                    Data = null;
+                    ContentType = null;
+                    DataType = null;
+                    ProcessData = null;
+                }
+
+                function ServiceFailed(xhr) {
+                    //alert(xhr.responseText);
+                    if (xhr.responseText) {
+                        var err = xhr.responseText;
+                        if (err)
+                            error(err);
+                        else
+                            error({ Message: "Unknown server error." })
+                    }
+                    return;
+                }
+
+
+            });
+        }
+    </script>
+</head>
+<body style="margin:0;overflow-x:hidden">
+    <div class="row" style="background-color: #FFFFFF; border-bottom: 1px solid #6D6D6D; ">
+        <div class="col-md-6 col-sm-6 col-xs-6 text-left">
+            <a href="#">
+                <img src="@InstanceLogo" border="0" alt="Home" style="margin: 15px; height: 50px" />
+            </a>
+        </div>
+        @if (!string.IsNullOrEmpty(InstanceHomeLogoPath))
+        {
+            <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                <div class="Top-LinkBox">
+                    <a href='@InstanceHomeLogoLink'>
+                        <img src='@InstanceHomeLogoPath' style="max-height: 50px;max-width:150px" />
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="MainBox" style="position: relative; background-color: #FFFFFF; margin: 0; ">
+        @if (!string.IsNullOrEmpty(InstanceHomeBannerPath))
+        {
+
+            if (InstanceHomeBannerAsDivBackgroundImage)
+            {
+                <div style="height: 650px; width: 100%;  background-size: cover;background-repeat:repeat-x;background-position:right top;margin:0;padding:0; background-image: url('@InstanceHomeBannerPath');"></div>
+            }
+            else
+            {
+                <img src='@InstanceHomeBannerPath' height="614" alt="banner">
+            }
+        }
+        <div class="TitleLoginBox">
+            <div style="height: 180px;">
+                <div class="AuthentificationBox" style="margin: 0 auto; position: relative; top: 60%;">
+
+                    <div id="LoginBox">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <p style="color: #555;font-size:1.6em;line-height:23px;">Type your Username and Password to start:</p>
+                            <table style="width:100%;">
+                                <tr>
+                                    <td>
+                                        <div class="input-group">
+
+                                            <input class="form-control" data-val="true" id="UserName" name="UserName" placeholder="Username" type="text" value="" />
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="padding-left:10px;height:20px;">
+                                        @Html.ValidationMessageFor(model => model.UserName)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="input-group">
+                                            <input class="form-control" data-val="true" id="Password" name="Password" placeholder="Password" type="password" />
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-lock"></i>
+                                            </span>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="padding-left:10px;height:20px;">
+                                        @Html.ValidationMessageFor(model => model.Password)
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class="input-group">
+                                <table style="width:100%;height:30px;">
+                                    <tr style="visibility: hidden;display:none">
+                                        <td width="120px;" style="text-wrap:none;">@Html.LabelFor(model => model.RememberMe, new { @class = "control-label" })</td>
+                                        <td>@Html.EditorFor(model => model.RememberMe)</td>
+                                        <p> @Html.ValidationMessageFor(model => model.RememberMe)</p>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <span style="color:red">
+                                                @Html.ValidationSummary(true)
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <input class="btn btn-custom-primary btn-lg btn-block btn-login" style="margin-top:5px;" type="submit" id="LoginBtn" value="Sign in" />
+                        }
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row" style="background-color: #FFFFFF">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="Footer text-center">
+                <span>@InstanceName</span>  &copy; @DateTime.Now.Year
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

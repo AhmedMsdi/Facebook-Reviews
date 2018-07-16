@@ -1,0 +1,1468 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Atreemo</name>
+    </assembly>
+    <members>
+        <member name="M:Atreemo.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,Atreemo.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:Atreemo.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:Atreemo.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:Atreemo.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atreemo.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:Atreemo.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:Atreemo.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:Atreemo.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:Atreemo.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atreemo.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:Atreemo.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,Atreemo.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,Atreemo.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(Atreemo.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:Atreemo.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},Atreemo.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:Atreemo.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:Atreemo.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleKey.#ctor(Atreemo.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:Atreemo.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:Atreemo.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:Atreemo.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,Atreemo.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:Atreemo.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:Atreemo.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:Atreemo.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:Atreemo.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atreemo.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:Atreemo.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:Atreemo.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atreemo.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="P:Atreemo.Models.Person._Title">
+            <summary>
+            Person title
+            </summary>
+        </member>
+        <member name="P:Atreemo.Models.Person.FirstName">
+            <summary>
+            First Name
+            </summary>
+        </member>
+        <member name="P:Atreemo.Models.Person.Phone">
+            <summary>
+            Landline number
+            </summary>
+        </member>
+        <member name="P:Atreemo.Models.Person.MobilPhone">
+            <summary>
+            Mobile number
+            </summary>
+        </member>
+        <member name="P:Atreemo.Models.Person.Email">
+            <summary>
+            Email address
+            </summary>
+        </member>
+        <member name="P:Atreemo.Models.Person.BirthDate">
+            <summary>
+            Date of birth
+            </summary>
+        </member>
+        <member name="P:Atreemo.Models.Person.Gender">
+            <summary>
+            Person gender
+            </summary>
+        </member>
+        <member name="T:Atreemo.Resources.Atreemo">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Account_FullTitle">
+            <summary>
+              Looks up a localized string similar to Your Account.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Account_Title">
+            <summary>
+              Looks up a localized string similar to Your Account.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Account_Tooltip">
+            <summary>
+              Looks up a localized string similar to Manage your account.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Add">
+            <summary>
+              Looks up a localized string similar to Add.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Automation_FullTitle">
+            <summary>
+              Looks up a localized string similar to Automation.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Automation_Title">
+            <summary>
+              Looks up a localized string similar to Automation.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Automation_Tooltip">
+            <summary>
+              Looks up a localized string similar to Automation.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Campaigns_FullTitle">
+            <summary>
+              Looks up a localized string similar to Campaigns.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Campaigns_Title">
+            <summary>
+              Looks up a localized string similar to Campaigns.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Campaigns_Tooltip">
+            <summary>
+              Looks up a localized string similar to Campaigns.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Companies">
+            <summary>
+              Looks up a localized string similar to Companies.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Company">
+            <summary>
+              Looks up a localized string similar to Company.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Company_FullTitle">
+            <summary>
+              Looks up a localized string similar to Company segmentation.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Company_Title">
+            <summary>
+              Looks up a localized string similar to Company segmentation.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.ConncetedAs">
+            <summary>
+              Looks up a localized string similar to You are connected as.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Contact">
+            <summary>
+              Looks up a localized string similar to Contact.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Contact_FullTitle">
+            <summary>
+              Looks up a localized string similar to Contact segmentation.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Contact_Title">
+            <summary>
+              Looks up a localized string similar to Contact segmentation.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Contacts">
+            <summary>
+              Looks up a localized string similar to Contacts.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Dashboard_FullTitle">
+            <summary>
+              Looks up a localized string similar to Dashboard.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Dashboard_Title">
+            <summary>
+              Looks up a localized string similar to Dashboard.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Dashboard_Tooltip">
+            <summary>
+              Looks up a localized string similar to Dashboard.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Events_FullTitle">
+            <summary>
+              Looks up a localized string similar to Events.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Events_Title">
+            <summary>
+              Looks up a localized string similar to Events.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Events_Tooltip">
+            <summary>
+              Looks up a localized string similar to Events.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Feedback_FullTitle">
+            <summary>
+              Looks up a localized string similar to Feedback.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Feedback_Title">
+            <summary>
+              Looks up a localized string similar to Feedback.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Feedback_Tooltip">
+            <summary>
+              Looks up a localized string similar to Feedback.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Help_FullTitle">
+            <summary>
+              Looks up a localized string similar to Help.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Help_Title">
+            <summary>
+              Looks up a localized string similar to Help.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Help_Tooltip">
+            <summary>
+              Looks up a localized string similar to Help.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Home">
+            <summary>
+              Looks up a localized string similar to Home.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Household">
+            <summary>
+              Looks up a localized string similar to Household.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Households">
+            <summary>
+              Looks up a localized string similar to Households.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Insight_FullTitle">
+            <summary>
+              Looks up a localized string similar to Insight.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Insight_Title">
+            <summary>
+              Looks up a localized string similar to Insight.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Insight_Tooltip">
+            <summary>
+              Looks up a localized string similar to Insight.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Logout">
+            <summary>
+              Looks up a localized string similar to Log out.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Mapping_FullTitle">
+            <summary>
+              Looks up a localized string similar to Mapping.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Mapping_Title">
+            <summary>
+              Looks up a localized string similar to Mapping.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Mapping_Tooltip">
+            <summary>
+              Looks up a localized string similar to Use your data together with Google Maps&lt;br&gt; to visualise and leverage your data in new&lt;br&gt; ways. &lt;a href=&quot;#&quot; target=&apos;_blank&apos; style=&apos;color:#FFF&apos;&gt;Find out more&lt;/a&gt;.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Salutation1">
+            <summary>
+              Looks up a localized string similar to Hello.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Salutation2">
+            <summary>
+              Looks up a localized string similar to Welcome Back.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Salutation3">
+            <summary>
+              Looks up a localized string similar to Welcome.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.SCV_FullTitle">
+            <summary>
+              Looks up a localized string similar to Signle Customer View.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.SCV_Title">
+            <summary>
+              Looks up a localized string similar to SCV.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.SCV_Tooltip">
+            <summary>
+              Looks up a localized string similar to Single Customer View.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Search">
+            <summary>
+              Looks up a localized string similar to Search.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.SearchCompany_FullTitle">
+            <summary>
+              Looks up a localized string similar to Search company.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.SearchCompany_Title">
+            <summary>
+              Looks up a localized string similar to Search company.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.SearchContact_FullTitle">
+            <summary>
+              Looks up a localized string similar to Search contact.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.SearchContact_Title">
+            <summary>
+              Looks up a localized string similar to Search contact.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Support_FullTitle">
+            <summary>
+              Looks up a localized string similar to Support.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Support_Title">
+            <summary>
+              Looks up a localized string similar to Support.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Support_Tooltip">
+            <summary>
+              Looks up a localized string similar to Support.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Surveys_FullTitle">
+            <summary>
+              Looks up a localized string similar to Surveys.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Surveys_Title">
+            <summary>
+              Looks up a localized string similar to Surveys.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Surveys_Tooltip">
+            <summary>
+              Looks up a localized string similar to Surveys.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.SwitchUser">
+            <summary>
+              Looks up a localized string similar to Switch user.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Talk_FullTitle">
+            <summary>
+              Looks up a localized string similar to Talk.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Talk_Title">
+            <summary>
+              Looks up a localized string similar to Talk.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Talk_Tooltip">
+            <summary>
+              Looks up a localized string similar to Talk.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.ToolsHeader1">
+            <summary>
+              Looks up a localized string similar to Tools.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.ToolsHeader2">
+            <summary>
+              Looks up a localized string similar to Recent Actions.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.ToolsHeader3">
+            <summary>
+              Looks up a localized string similar to Your Saved Work.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.ToolsHeader4">
+            <summary>
+              Looks up a localized string similar to Insight.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.UserManagement_FullTitle">
+            <summary>
+              Looks up a localized string similar to User Management.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.UserManagement_Title">
+            <summary>
+              Looks up a localized string similar to User Management.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.UserManagement_Tooltip">
+            <summary>
+              Looks up a localized string similar to Manage all users.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Vouchers_FullTitle">
+            <summary>
+              Looks up a localized string similar to Vouchers.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Vouchers_Title">
+            <summary>
+              Looks up a localized string similar to Vouchers.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.Vouchers_Tooltip">
+            <summary>
+              Looks up a localized string similar to Vouchers.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.WelcomeMessage1">
+            <summary>
+              Looks up a localized string similar to what do you want to do today…..
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.WelcomeMessage2">
+            <summary>
+              Looks up a localized string similar to we have not seen you for a while…..
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Atreemo.WelcomeMessage3">
+            <summary>
+              Looks up a localized string similar to how are you today?.
+            </summary>
+        </member>
+        <member name="T:Atreemo.Resources.HelpTooltip">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_1">
+            <summary>
+              Looks up a localized string similar to You can build queries, view saved selections and load data files from the options below..
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_10">
+            <summary>
+              Looks up a localized string similar to Add a name for your selection so it is easy to identify later..
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_101">
+            <summary>
+              Looks up a localized string similar to Access your Atreemo modules right here .
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_102">
+            <summary>
+              Looks up a localized string similar to This panel will display your recent actions in Atreemo..
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_103">
+            <summary>
+              Looks up a localized string similar to Access your saved work or projects your colleagues want to share with you here.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_104">
+            <summary>
+              Looks up a localized string similar to Access your dashboard and review key stats for your campaigns.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_11">
+            <summary>
+              Looks up a localized string similar to Add more information to help you and others identify what it includes and if necessary what it is for..
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_2">
+            <summary>
+              Looks up a localized string similar to Use the tabs here and above to manage and do more with your selection..
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_3">
+            <summary>
+              Looks up a localized string similar to The count shows the number of people in your selection at a contact level and a Household / Company level.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_300">
+            <summary>
+              Looks up a localized string similar to Add your survey description.  This is not customer facing, it is something that will help you identify the survey later.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_301">
+            <summary>
+              Looks up a localized string similar to Add your survey description. This is not customer facing, it is something that will help you identify the survey later.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_302">
+            <summary>
+              Looks up a localized string similar to You can add a logo to your survey. Click ‘Choose file’ to locate the file you want to use and then click ‘Upload’. You will then be able to see the placement of your logo when you preview the survey..
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_303">
+            <summary>
+              Looks up a localized string similar to You can set the amount of space (in pixals) you want between questions here.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_304">
+            <summary>
+              Looks up a localized string similar to Add your survey title. This will appear at the top of the survey and if you post to Facebook and Twitter it will appear in the message that is posted..
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_305">
+            <summary>
+              Looks up a localized string similar to Add your survey introduction. This will appear on the first page of your survey to tell the recipient more about it..
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_306">
+            <summary>
+              Looks up a localized string similar to This text will appear on a page presented once the survey has been completed.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_4">
+            <summary>
+              Looks up a localized string similar to Open a saved selection.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_6">
+            <summary>
+              Looks up a localized string similar to Drag operations.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.HelpTooltip.Helptooltip_7">
+            <summary>
+              Looks up a localized string similar to Build your selection by dragging nodes to the window to the right..
+            </summary>
+        </member>
+        <member name="T:Atreemo.Resources.Models">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Company_CpyID">
+            <summary>
+              Looks up a localized string similar to CpyID.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Company_CpyID_Toshiba">
+            <summary>
+              Looks up a localized string similar to Company ID.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Company_Name_B2B">
+            <summary>
+              Looks up a localized string similar to Company Name.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Company_Name_B2C">
+            <summary>
+              Looks up a localized string similar to Name.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Company_NationalID">
+            <summary>
+              Looks up a localized string similar to National ID.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Company_NationalID_Arrow">
+            <summary>
+              Looks up a localized string similar to Account Number.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Competitor_Name">
+            <summary>
+              Looks up a localized string similar to Competitor.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Competitor_Name_Birmingham">
+            <summary>
+              Looks up a localized string similar to Centre.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Competitor_Name_SLM">
+            <summary>
+              Looks up a localized string similar to Centre.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Competitor_Name_XCT">
+            <summary>
+              Looks up a localized string similar to Station.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Contact_CtcID">
+            <summary>
+              Looks up a localized string similar to ID.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Contact_CtcID_Toshiba">
+            <summary>
+              Looks up a localized string similar to Contact ID.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_CampaignTitle">
+            <summary>
+              Looks up a localized string similar to Title.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_CGPercent">
+            <summary>
+              Looks up a localized string similar to Control Group.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_DaysToRemainInCG">
+            <summary>
+              Looks up a localized string similar to Days to remain in CG.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_DueDate">
+            <summary>
+              Looks up a localized string similar to Due/Start Date.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_ExcludeCGFromAllCampaigns">
+            <summary>
+              Looks up a localized string similar to Exclude CG from.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_ExpiryDate">
+            <summary>
+              Looks up a localized string similar to Expiration/End Date.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_ID">
+            <summary>
+              Looks up a localized string similar to Campaign Code.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_Originator">
+            <summary>
+              Looks up a localized string similar to Order Originator.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_SenderValueName">
+            <summary>
+              Looks up a localized string similar to Sender Profile.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_SubmittedOn">
+            <summary>
+              Looks up a localized string similar to Order Raised.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_SubType">
+            <summary>
+              Looks up a localized string similar to Category.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_TotalComms">
+            <summary>
+              Looks up a localized string similar to Initial Total Comms.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_TotalCost">
+            <summary>
+              Looks up a localized string similar to Initial Total Cost.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_TotalTargetedCustomers">
+            <summary>
+              Looks up a localized string similar to Initial Targeted Customers.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.MarketingCampaign_URD">
+            <summary>
+              Looks up a localized string similar to Saved On.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Person_DOB">
+            <summary>
+              Looks up a localized string similar to DOB.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Person_DOB_Toshiba">
+            <summary>
+              Looks up a localized string similar to Date of birth.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Preferences_CpyID_B2B">
+            <summary>
+              Looks up a localized string similar to Company ID.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Preferences_CpyID_B2C">
+            <summary>
+              Looks up a localized string similar to Household ID.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Preferences_CtcID">
+            <summary>
+              Looks up a localized string similar to Contact ID.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Preferences_CtcID_SLM">
+            <summary>
+              Looks up a localized string similar to ID.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Store_Name">
+            <summary>
+              Looks up a localized string similar to Store.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Store_Name_Birmingham">
+            <summary>
+              Looks up a localized string similar to Catchment.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Store_Name_SLM">
+            <summary>
+              Looks up a localized string similar to Centre.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Models.Store_Name_XCT">
+            <summary>
+              Looks up a localized string similar to Station.
+            </summary>
+        </member>
+        <member name="T:Atreemo.Resources.Setting">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.Icon_EditIconsBtn">
+            <summary>
+              Looks up a localized string similar to Edit Icons.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.Icon_NewSet">
+            <summary>
+              Looks up a localized string similar to New Icon set.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.IconCriteria_Label">
+            <summary>
+              Looks up a localized string similar to Criteria.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.IconEdit_Title">
+            <summary>
+              Looks up a localized string similar to Select Icon to Edit.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.IconFileName_Label">
+            <summary>
+              Looks up a localized string similar to File name.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.IconGroupName_Label">
+            <summary>
+              Looks up a localized string similar to Icon Group name.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.IconName_Label">
+            <summary>
+              Looks up a localized string similar to Icon Name.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.IconNote">
+            <summary>
+              Looks up a localized string similar to Please note icons should be xxx px x xxx px.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.IconSelectionCount">
+            <summary>
+              Looks up a localized string similar to Count.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.IconSetEdit_Title">
+            <summary>
+              Looks up a localized string similar to Select Icon set to Edit.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.IconSrc_Label">
+            <summary>
+              Looks up a localized string similar to Icon.
+            </summary>
+        </member>
+        <member name="P:Atreemo.Resources.Setting.IconUpdate_Label">
+            <summary>
+              Looks up a localized string similar to Update.
+            </summary>
+        </member>
+        <member name="M:Atreemo.Tools.GlobalHelper.IsProfileAccessAuthorised(System.Int32,System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            Returns true if the user is authorised to access the profile and false if not
+            </summary>
+            <param name="UserID">User ID</param>
+            <param name="Value">Value to check depending on the authorization type (CtcID, CpyID, PrjMkgID , OpCode)</param>
+            <param name="AuthorizationType">Authorization Type: 0--> Contact; 1 --> Company ; 2--> MarketingProject; 3--> Ecast; 4--> SMS</param>
+            <returns></returns>
+        </member>
+        <member name="M:Atreemo.Tools.GlobalHelper.AddSpacesToSentence(System.String)">
+            <summary>
+            Counting the result of a selection with the option to apply a node filter and to change the segmentation mode
+            </summary>
+            <param name="selectionType">Segmentation Mode</param>
+            /// <param name="SelectionNodes">SelectionNodes</param>
+            <param name="ExtraFilter">Nodecode of any node to be used as a filter (e.g. Emailable node)</param>
+            <returns>It returns the count of the selection with the applied filter</returns>
+        </member>
+        <member name="M:Atreemo.Tools.LoginHelper.DisablePageCaching">
+            <summary>
+            Make sure the browser does not cache this page
+            </summary>
+        </member>
+        <member name="M:Atreemo.Tools.LoginHelper.Send401(System.String)">
+            <summary>
+            Send a 401 response
+            <param name="returnUrl">
+            For passing the returnUrl in order to force a refresh of the
+            current page in case the cancel button in the Login popup has been clicked</param>
+            </summary>
+        </member>
+        <member name="P:ParserParser.HtmlTag.Name">
+            <summary>
+            Name of this tag
+            </summary>
+        </member>
+        <member name="P:ParserParser.HtmlTag.Attributes">
+            <summary>
+            Collection of attribute names and values for this tag
+            </summary>
+        </member>
+        <member name="P:ParserParser.HtmlTag.TrailingSlash">
+            <summary>
+            True if this tag contained a trailing forward slash
+            </summary>
+        </member>
+        <member name="M:ParserParser.HtmlParser.Reset">
+            <summary>
+            Resets the current position to the start of the current document
+            </summary>
+        </member>
+        <member name="M:ParserParser.HtmlParser.Reset(System.String)">
+            <summary>
+            Sets the current document and resets the current position to the
+            start of it
+            </summary>
+            <param name="html"></param>
+        </member>
+        <member name="P:ParserParser.HtmlParser.EOF">
+            <summary>
+            Indicates if the current position is at the end of the current
+            document
+            </summary>
+        </member>
+        <member name="M:ParserParser.HtmlParser.ParseNext(System.String,ParserParser.HtmlTag@)">
+            <summary>
+            Parses the next tag that matches the specified tag name
+            </summary>
+            <param name="name">Name of the tags to parse ("*" = parse all
+            tags)</param>
+            <param name="tag">Returns information on the next occurrence
+            of the specified tag or null if none found</param>
+            <returns>True if a tag was parsed or false if the end of the
+            document was reached</returns>
+        </member>
+        <member name="M:ParserParser.HtmlParser.ParseTag(System.String,ParserParser.HtmlTag@)">
+            <summary>
+            Parses the contents of an HTML tag. The current position should
+            be at the first character following the tag's opening less-than
+            character.
+            
+            Note: We parse to the end of the tag even if this tag was not
+            requested by the caller. This ensures subsequent parsing takes
+            place after this tag
+            </summary>
+            <param name="name">Name of the tag the caller is requesting,
+            or "*" if caller is requesting all tags</param>
+            <param name="tag">Returns information on this tag if it's one
+            the caller is requesting</param>
+            <returns>True if data is being returned for a tag requested by
+            the caller or false otherwise</returns>
+        </member>
+        <member name="M:ParserParser.HtmlParser.ParseTagName">
+            <summary>
+            Parses a tag name. The current position should be the first
+            character of the name
+            </summary>
+            <returns>Returns the parsed name string</returns>
+        </member>
+        <member name="M:ParserParser.HtmlParser.ParseAttributeName">
+            <summary>
+            Parses an attribute name. The current position should be the
+            first character of the name
+            </summary>
+            <returns>Returns the parsed name string</returns>
+        </member>
+        <member name="M:ParserParser.HtmlParser.ParseAttributeValue">
+            <summary>
+            Parses an attribute value. The current position should be the
+            first non-whitespace character following the equal sign.
+            
+            Note: We terminate the name or value if we encounter a new line.
+            This seems to be the best way of handling errors such as values
+            missing closing quotes, etc.
+            </summary>
+            <returns>Returns the parsed value string</returns>
+        </member>
+        <member name="M:ParserParser.HtmlParser.MoveToNextTag">
+            <summary>
+            Moves to the start of the next tag
+            </summary>
+            <returns>True if another tag was found, false otherwise</returns>
+        </member>
+        <member name="M:ParserParser.HtmlParser.Peek">
+            <summary>
+            Returns the character at the current position, or a null
+            character if we're at the end of the document
+            </summary>
+            <returns>The character at the current position</returns>
+        </member>
+        <member name="M:ParserParser.HtmlParser.Peek(System.Int32)">
+            <summary>
+            Returns the character at the specified number of characters
+            beyond the current position, or a null character if the
+            specified position is at the end of the document
+            </summary>
+            <param name="ahead">The number of characters beyond the
+            current position</param>
+            <returns>The character at the specified position</returns>
+        </member>
+        <member name="M:ParserParser.HtmlParser.Move">
+            <summary>
+            Moves the current position ahead one character
+            </summary>
+        </member>
+        <member name="M:ParserParser.HtmlParser.Move(System.Int32)">
+            <summary>
+            Moves the current position ahead the specified number of characters
+            </summary>
+            <param name="ahead">The number of characters to move ahead</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ParserParser.HtmlParser.SkipWhitespace" -->
+        <member name="M:ParserParser.HtmlParser.NormalizePosition">
+            <summary>
+            Normalizes the current position. This is primarily for handling
+            conditions where IndexOf(), etc. return negative values when
+            the item being sought was not found
+            </summary>
+        </member>
+        <member name="T:IPProcessStatus">
+            <summary>
+            Summary description for IPProcessStatus
+            </summary>
+        </member>
+        <member name="T:NameAndAddress">
+            <summary>
+            Summary description for NameAndAddress
+            </summary>
+        </member>
+    </members>
+</doc>
